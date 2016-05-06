@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	>
+
+<h:head>
+</h:head>
+<h:body>
+	<h1>Hello World PrimeFaces</h1>
+
+	<h:form id="form">
+			<h:outputLabel for="playerName" value="Name"></h:outputLabel>
+			<h:inputText id="playerName" value="#{createPlayer.player.name}" />
+		<br />
+			<h:outputLabel for="playerPosition" value="Position"></h:outputLabel>
+			<h:inputText id="playerPosition"
+				value="#{createPlayer.player.position}" />
+		<br />
+			<h:outputLabel for="playerNumber" value="Number:"></h:outputLabel>
+			<h:inputText id="playerNumber" value="#{createPlayer.player.number}" />
+		<br />
+			<h:outputLabel for="playerAge" value="Age:"></h:outputLabel>
+			<h:inputText id="playerAge" value="#{createPlayer.player.age}" />
+		<br />
+			<h:outputLabel for="playerWeight" value="Weight:"></h:outputLabel>
+			<h:inputText id="playerWeight" value="#{createPlayer.player.weight}" />
+		<br />
+			<h:outputLabel for="playerHeight" value="Height:"></h:outputLabel>
+			<h:inputText id="playerHeight" value="#{createPlayer.player.height}" />
+		<br />
+			<h:outputLabel for="playerBirthdate" value="Birthdate:"></h:outputLabel>
+			<h:inputText id="playerBirthdate" value="1" />
+		<br />
+			<h:outputLabel for="playerBirthplace" value="Birthplace:"></h:outputLabel>
+			<h:inputText id="playerBirthplace"
+				value="#{createPlayer.player.birthplace}" />
+		<br />
+			<h:outputLabel for="playerImageUrl" value="Image Url:"></h:outputLabel>
+			<h:inputText id="playerImageUrl"
+				value="#{createPlayer.player.imageUrl}" size="80" />
+		<br />
+			<h:outputLabel for="playerBigImageUrl" value="Big Image Url:"></h:outputLabel>
+			<h:inputText id="playerBigImageUrl"
+				value="#{createPlayer.player.bigImageUrl}" size="80" />
+		<br />
+		<h:outputLabel for="playerTeams" value="Team*:" />
+		<h:selectOneMenu id="playerTeams"
+			value="#{createPlayer.team_id}"
+			required="true">
+			<f:selectItem itemLabel="Select One Team" itemValue="" />
+			<f:selectItems value="#{createPlayer.teams}" />
+		</h:selectOneMenu>
+		<br />
+			<h:commandButton value="Save" action="#{createPlayer.save}">
+			</h:commandButton>
+	</h:form>
+
+</h:body>
+</html>

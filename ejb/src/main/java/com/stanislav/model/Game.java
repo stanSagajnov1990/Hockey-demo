@@ -37,6 +37,10 @@ public class Game {
 	@Column(name="GAME_DATE")
 	@Temporal(TemporalType.DATE)
 	private Date gameDate;
+	@Column(name="OT")
+	private boolean winInOvertime;
+	@Column(name="SO")
+	private boolean winInShootout;
 	
 	public Long getId() {
 		return id;
@@ -84,6 +88,22 @@ public class Game {
 	
 	public void setGameDate(Date gameDate) {
 		this.gameDate = gameDate;
+	}
+	
+	public boolean isWinInOvertime() {
+		return winInOvertime;
+	}
+	
+	public void setWinInOvertime(boolean winInOvertime) {
+		this.winInOvertime = winInOvertime;
+	}
+	
+	public boolean isWinInShootout() {
+		return winInShootout;
+	}
+	
+	public void setWinInShootout(boolean winInShootout) {
+		this.winInShootout = winInShootout;
 	}
 	
 }

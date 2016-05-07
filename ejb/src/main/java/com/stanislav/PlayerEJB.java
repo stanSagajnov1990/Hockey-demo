@@ -9,7 +9,6 @@ import com.stanislav.model.Player;
 @Stateless
 public class PlayerEJB {
 
-//	@Inject
 	@PersistenceContext
 	private EntityManager em;
 	

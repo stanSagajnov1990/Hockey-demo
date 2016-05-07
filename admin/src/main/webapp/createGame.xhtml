@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:head>
+</h:head>
+<h:body>
+	<h1>Hello World PrimeFaces</h1>
+
+	<h:form id="form">
+		<h:outputLabel for="homeTeam" value="Name"></h:outputLabel>
+		
+		<h:selectOneMenu id="homeTeam" value="#{createGame.homeTeam}"
+			required="true">
+			<f:selectItem itemLabel="Select One Team" itemValue="" />
+			<f:selectItems value="#{createGame.teams}" />
+		</h:selectOneMenu> :
+		
+		<h:outputLabel for="awayTeam" value="Name"></h:outputLabel>
+		<h:selectOneMenu id="awayTeam" value="#{createGame.awayTeam}"
+			required="true">
+			<f:selectItem itemLabel="Select One Team" itemValue="" />
+			<f:selectItems value="#{createGame.teams}" />
+		</h:selectOneMenu>
+
+		<h:inputText id="homeTeamScore"
+			value="#{createGame.game.homeTeamScore}" />
+		<h:inputText id="awayTeamScore"
+			value="#{createGame.game.awayTeamScore}" />
+
+		<h:inputText id="date" value="#{createGame.game.gameDate}" size="20"
+			required="true" label="Receipt Date">
+
+			<f:convertDateTime pattern="M-d-yyyy"  locale="en"/>
+		</h:inputText>
+
+		<h:commandButton value="Save" action="#{createGame.save}">
+		</h:commandButton>
+	</h:form>
+
+</h:body>
+</html>

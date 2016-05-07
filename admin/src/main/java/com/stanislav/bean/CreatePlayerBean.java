@@ -30,7 +30,7 @@ public class CreatePlayerBean {
     
     @EJB
     private TeamEJB teamEJB;
-	
+    
 	private Player player = new Player(){{
 		setName("Alex Ovechkin");
 	}};

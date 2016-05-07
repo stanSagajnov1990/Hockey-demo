@@ -16,7 +16,7 @@ public class TeamEJB {
 	private EntityManager em;
 	
 	public List<Team> getAllTeams(){
-		return em.createQuery("SELECT t FROM Team t").getResultList();
+		return em.createQuery("SELECT t FROM Team t ORDER BY name").getResultList();
 	}
 	
 	public Team getTeamById(Long id){

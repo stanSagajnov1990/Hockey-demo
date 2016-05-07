@@ -9,6 +9,7 @@
 		<module>ejb</module>
 		<module>admin</module>
 		<module>ear</module>
+		<module>web</module>
 	</modules>
 
 	<properties>
@@ -39,6 +40,14 @@
 			<dependency>
 				<groupId>com.stanislav</groupId>
 				<artifactId>Hockey-admin</artifactId>
+				<version>${project.version}</version>
+				<type>war</type>
+				<scope>compile</scope>
+			</dependency>
+			
+			<dependency>
+				<groupId>com.stanislav</groupId>
+				<artifactId>Hockey-web</artifactId>
 				<version>${project.version}</version>
 				<type>war</type>
 				<scope>compile</scope>

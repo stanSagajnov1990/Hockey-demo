@@ -17,6 +17,11 @@
 		</dependency>
 		<dependency>
 			<groupId>com.stanislav</groupId>
+			<artifactId>Hockey-web</artifactId>
+			<type>war</type>
+		</dependency>
+		<dependency>
+			<groupId>com.stanislav</groupId>
 			<artifactId>Hockey-ejb</artifactId>
 			<type>ejb</type>
 		</dependency>
@@ -37,6 +42,11 @@
 							<groupId>com.stanislav</groupId>
 							<artifactId>Hockey-admin</artifactId>
 							<contextRoot>/Hockey-main</contextRoot>
+						</webModule>
+						<webModule>
+							<groupId>com.stanislav</groupId>
+							<artifactId>Hockey-web</artifactId>
+							<contextRoot>/Hockey-web</contextRoot>
 						</webModule>
 					</modules>
 					<fileNameMapping>no-version</fileNameMapping>

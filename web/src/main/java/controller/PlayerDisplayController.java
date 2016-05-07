@@ -8,13 +8,11 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.AbstractController;
 
-import com.stanislav.GreeterHockeyEJB;
 import com.stanislav.PlayerEJB;
+import com.stanislav.model.Player;
 
 public class PlayerDisplayController extends AbstractController{
 
-	@EJB(mappedName="java:app/Hockey-ejb/PlayerEJB")
-	private PlayerEJB playerEJB;
 	
 	
 	@Override
@@ -22,11 +20,10 @@ public class PlayerDisplayController extends AbstractController{
 			HttpServletResponse resp) throws Exception {
 		ModelAndView model = new ModelAndView("PlayerDisplayController");
 
-//		InitialContext context = new InitialContext();
-//		PlayerEJB playerEJB = (PlayerEJB) context.lookup("java:app/Hockey-ejb/PlayerEJB!com.stanislav.PlayerEJB");
-		Controller controller = new Controller();
-		controller.doSomething();
-		model.addObject("player", playerEJB.getPlayerById(Long.valueOf(req.getParameter("id"))));
+		InitialContext context = new InitialContext();
+		PlayerEJB playerEJB = (PlayerEJB) context.lookup("java:app/Hockey-ejb/PlayerEJB");
+		Player player = playerEJB.getPlayerById(Long.valueOf(req.getParameter("id")));
+		model.addObject("player", player);
 		
 		return model;
 	}

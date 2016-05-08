@@ -14,6 +14,7 @@
 	<h1>Hello World PrimeFaces</h1>
 
 	<h:form id="form">
+		<input type="hidden" name="id" value="${param.id}" />
 		<h:panelGrid columns="2">
 			<h:outputLabel for="playerName" value="Name:" />
 			<h:inputText id="playerName" value="#{editPlayer.player.name}" />
@@ -29,7 +30,8 @@
 			<h:outputLabel for="playerHeight" value="Height:" />
 			<h:inputText id="playerHeight" value="#{editPlayer.player.height}" />
 			<h:outputLabel for="playerBirthdate" value="Birthdate:" />
-			<h:inputText id="playerBirthdate" value="#{editPlayer.birthdate}">
+			<h:inputText id="playerBirthdate"
+				value="#{editPlayer.player.birthdate}">
 				<f:convertDateTime pattern="MMM d, yyyy" locale="en" />
 			</h:inputText>
 			<h:outputLabel for="playerBirthplace" value="Birthplace:" />

@@ -50,8 +50,6 @@ public class PlayerEJB {
 		query.setParameter("PLAYER", player);
 		query.setParameter("ONLYPLAYOFFS", onlyPlayoffs);
 		Object[] result = (Object[])query.getSingleResult();
-		PlayerStatistics statistics = new PlayerStatistics();
-//		statistics.setGamesPlayed((Long)(result[0]));
 		return result;
 	}
 }

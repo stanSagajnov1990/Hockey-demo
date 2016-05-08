@@ -8,55 +8,49 @@
 	xmlns:p="http://primefaces.org/ui">
 
 <h:head>
-<title>Edit Player: #{editPlayer.player.name}</title>
+	<title>Edit Player: #{editPlayer.player.name}</title>
 </h:head>
 <h:body>
 	<h1>Hello World PrimeFaces</h1>
 
-	${param.id}
 	<h:form id="form">
-	<input type="hidden" name="id" value="${param.id}"/>
-			<h:outputLabel for="playerName" value="Name:"></h:outputLabel>
+		<h:panelGrid columns="2">
+			<h:outputLabel for="playerName" value="Name:" />
 			<h:inputText id="playerName" value="#{editPlayer.player.name}" />
-		<br />
-			<h:outputLabel for="playerPosition" value="Position:"></h:outputLabel>
-			<h:inputText id="playerPosition" value="#{editPlayer.player.position}" />
-		<br />
-			<h:outputLabel for="playerNumber" value="Number:"></h:outputLabel>
+			<h:outputLabel for="playerPosition" value="Position:" />
+			<h:inputText id="playerPosition"
+				value="#{editPlayer.player.position}" />
+			<h:outputLabel for="playerNumber" value="Number:" />
 			<h:inputText id="playerNumber" value="#{editPlayer.player.number}" />
-		<br />
-			<h:outputLabel for="playerAge" value="Age:"></h:outputLabel>
+			<h:outputLabel for="playerAge" value="Age:" />
 			<h:inputText id="playerAge" value="#{editPlayer.player.age}" />
-		<br />
-			<h:outputLabel for="playerWeight" value="Weight:"></h:outputLabel>
+			<h:outputLabel for="playerWeight" value="Weight:" />
 			<h:inputText id="playerWeight" value="#{editPlayer.player.weight}" />
-		<br />
-			<h:outputLabel for="playerHeight" value="Height:"></h:outputLabel>
+			<h:outputLabel for="playerHeight" value="Height:" />
 			<h:inputText id="playerHeight" value="#{editPlayer.player.height}" />
-		<br />
-			<h:outputLabel for="playerBirthdate" value="Birthdate:"></h:outputLabel>
-			<h:inputText id="playerBirthdate" value="#{editPlayer.birthdate}" />
-		<br />
-			<h:outputLabel for="playerBirthplace" value="Birthplace:"></h:outputLabel>
-			<h:inputText id="playerBirthplace" value="#{editPlayer.player.birthplace}" />
-		<br />
-			<h:outputLabel for="playerImageUrl" value="Image Url:"></h:outputLabel>
-			<h:inputText id="playerImageUrl" value="#{editPlayer.player.imageUrl}" size="80"/>
-		<br />
-			<h:outputLabel for="playerBigImageUrl" value="Big Image Url:"></h:outputLabel>
-			<h:inputText id="playerBigImageUrl" value="#{editPlayer.player.bigImageUrl}" size="80"/>
-		<br />
-		<h:outputLabel for="playerTeams" value="Team*:" />
-		<h:selectOneMenu id="playerTeams"
-			value="#{editPlayer.team_id}"
-			required="true">
-			<f:selectItem itemLabel="Select One Team" itemValue="" />
-			<f:selectItems value="#{editPlayer.teams}" />
-		</h:selectOneMenu>
-		<br />
-			<h:commandButton value="Save" action="#{editPlayer.save}" >
-				<f:param name="action" value="${param.id}"/>
+			<h:outputLabel for="playerBirthdate" value="Birthdate:" />
+			<h:inputText id="playerBirthdate" value="#{editPlayer.birthdate}">
+				<f:convertDateTime pattern="MMM d, yyyy" locale="en" />
+			</h:inputText>
+			<h:outputLabel for="playerBirthplace" value="Birthplace:" />
+			<h:inputText id="playerBirthplace"
+				value="#{editPlayer.player.birthplace}" />
+			<h:outputLabel for="playerImageUrl" value="Image Url:" />
+			<h:inputText id="playerImageUrl"
+				value="#{editPlayer.player.imageUrl}" size="80" />
+			<h:outputLabel for="playerBigImageUrl" value="Big Image Url:" />
+			<h:inputText id="playerBigImageUrl"
+				value="#{editPlayer.player.bigImageUrl}" size="80" />
+			<h:outputLabel for="playerTeams" value="Team*:" />
+			<h:selectOneMenu id="playerTeams" value="#{editPlayer.team_id}"
+				required="true">
+				<f:selectItem itemLabel="Select One Team" itemValue="" />
+				<f:selectItems value="#{editPlayer.teams}" />
+			</h:selectOneMenu>
+			<h:commandButton value="Save" action="#{editPlayer.save}">
+				<f:param name="action" value="${param.id}" />
 			</h:commandButton>
+		</h:panelGrid>
 	</h:form>
 
 </h:body>

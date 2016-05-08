@@ -91,7 +91,7 @@ public class EditPlayerBean {
 	}
 
 	public void save() {
-		String id = (String) FacesContext.getCurrentInstance()
+		/*String id = (String) FacesContext.getCurrentInstance()
 				.getExternalContext().getRequestParameterMap().get("id");
 		System.out.println(id);
 		System.out.println("TEST");
@@ -125,7 +125,7 @@ public class EditPlayerBean {
 		player.setHeight(height);
 		player.setBirthplace(birthplace);
 		player.setImageUrl(imageUrl);
-		player.setBigImageUrl(bigImageUrl);
+		player.setBigImageUrl(bigImageUrl); */
 //		player.setTwitterUrl(twitterUrl);
 //		player.setTwitterHandle(twitterHandle);
 //		player.setTeam_id(team_id);

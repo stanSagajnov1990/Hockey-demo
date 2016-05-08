@@ -39,9 +39,9 @@ public class Player {
 	@Column(name="NAME")
 	private String name;
 	@Column(name="AGE")
-	private int age;
+	private Integer age;
 	@Column(name="NUMBER")
-	private int number;
+	private Integer number;
 	@Column(name="POSITION")
 	private String position;
 	@Temporal(TemporalType.DATE)
@@ -50,9 +50,9 @@ public class Player {
 	@Column(name="BIRTH_PLACE")
 	private String birthplace;
 	@Column(name="WEIGHT")
-	private int weight;
+	private Integer weight;
 	@Column(name="HEIGHT")
-	private int height;
+	private Integer height;
 	@Column(name="IMAGE_URL")
 	private String imageUrl;
 	@Column(name="BIG_IMAGE_URL")
@@ -81,11 +81,11 @@ public class Player {
 		return name;
 	}
 
-	public int getAge() {
+	public Integer getAge() {
 		return age;
 	}
 
-	public int getNumber() {
+	public Integer getNumber() {
 		return number;
 	}
 
@@ -101,11 +101,11 @@ public class Player {
 		return birthplace;
 	}
 
-	public int getWeight() {
+	public Integer getWeight() {
 		return weight;
 	}
 
-	public int getHeight() {
+	public Integer getHeight() {
 		return height;
 	}
 
@@ -125,11 +125,11 @@ public class Player {
 		this.name = name;
 	}
 
-	public void setAge(int age) {
+	public void setAge(Integer age) {
 		this.age = age;
 	}
 
-	public void setNumber(int number) {
+	public void setNumber(Integer number) {
 		this.number = number;
 	}
 
@@ -145,11 +145,11 @@ public class Player {
 		this.birthplace = birthplace;
 	}
 
-	public void setWeight(int weight) {
+	public void setWeight(Integer weight) {
 		this.weight = weight;
 	}
 
-	public void setHeight(int height) {
+	public void setHeight(Integer height) {
 		this.height = height;
 	}
 

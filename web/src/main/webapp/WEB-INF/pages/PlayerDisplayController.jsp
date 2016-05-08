@@ -121,16 +121,47 @@ body {
 							<span>Career Playoffs</span>
 						</td>
 						<td>
-							<span>123</span>
+							<span>${sumOfPlayoffs[0]}</span>
 						</td>
 						<td>
-							<span>49</span>
+							<span>${sumOfPlayoffs[1]}</span>
 						</td>
 						<td>
-							<span>72</span>
+							<span>${sumOfPlayoffs[2]}</span>
 						</td>
 						<td>
-							<span>121</span>
+							<span>${sumOfPlayoffs[3]}</span>
+						</td>
+						<td>
+							<span>${sumOfPlayoffs[4]}</span>
+						</td>
+						<td>
+							<span>${sumOfPlayoffs[5]}</span>
+						</td>
+						<td>
+							<span>${sumOfPlayoffs[6]}</span>
+						</td>
+						<td>
+							<span>${sumOfPlayoffs[7]}</span>
+						</td>
+						<td>
+							<span>${sumOfPlayoffs[8]}</span>
+						</td>
+						<td>
+							<span>${sumOfPlayoffs[9]}</span>
+						</td>
+						<td>
+							<span>${sumOfPlayoffs[10]}</span>
+						</td>
+						<td>
+							<span>${sumOfPlayoffs[11]}</span>
+						</td>
+						<td>
+							<span>${sumOfPlayoffs[12]}</span>
+						</td>
+						<%//TODO round up to 2 decimal points %>
+						<td>
+							<span>${sumOfPlayoffs[13]}</span>
 						</td>
 					</tr>
 					<tr>
@@ -225,7 +256,7 @@ body {
 						</td>
 						<%//TODO round up to 2 decimal points %>
 						<td>
-							<span>${sumOfSeasons[15]}</span>
+							<span>${sumOfSeasons[13]}</span>
 						</td>
 					</tr>
 				</tbody>

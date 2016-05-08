@@ -31,9 +31,9 @@ public class Game {
 	@JoinColumn(name="AWAY_TEAM_ID",nullable=false)
 	private Team awayTeam;
 	@Column(name="HOME_TEAM_SCORE")
-	private int homeTeamScore;
+	private Integer homeTeamScore;
 	@Column(name="AWAY_TEAM_SCORE")
-	private int awayTeamScore;
+	private Integer awayTeamScore;
 	@Column(name="GAME_DATE")
 	@Temporal(TemporalType.DATE)
 	private Date gameDate;
@@ -66,19 +66,19 @@ public class Game {
 		this.awayTeam = awayTeam;
 	}
 	
-	public int getHomeTeamScore() {
+	public Integer getHomeTeamScore() {
 		return homeTeamScore;
 	}
 	
-	public void setHomeTeamScore(int homeTeamScore) {
+	public void setHomeTeamScore(Integer homeTeamScore) {
 		this.homeTeamScore = homeTeamScore;
 	}
 	
-	public int getAwayTeamScore() {
+	public Integer getAwayTeamScore() {
 		return awayTeamScore;
 	}
 	
-	public void setAwayTeamScore(int awayTeamScore) {
+	public void setAwayTeamScore(Integer awayTeamScore) {
 		this.awayTeamScore = awayTeamScore;
 	}
 	

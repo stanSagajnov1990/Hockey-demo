@@ -7,6 +7,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 @Entity
@@ -35,7 +37,7 @@ public class PlayerStatistics {
 	@Column(name="PLUS_MINUS")
 	private int plusminus;
 	@Column(name="PENALTY_IN_MINUTES")
-	private int pentaltyInMinutes;
+	private int penaltyInMinutes;
 	@Column(name="POWERPLAY_GOALS")
 	private int powerPlayGoals;
 	@Column(name="POWERPLAY_POINTS")
@@ -131,12 +133,12 @@ public class PlayerStatistics {
 		this.plusminus = plusminus;
 	}
 
-	public int getPentaltyInMinutes() {
-		return pentaltyInMinutes;
+	public int getPenaltyInMinutes() {
+		return penaltyInMinutes;
 	}
 
-	public void setPentaltyInMinutes(int pentaltyInMinutes) {
-		this.pentaltyInMinutes = pentaltyInMinutes;
+	public void setPenaltyInMinutes(int penaltyInMinutes) {
+		this.penaltyInMinutes = penaltyInMinutes;
 	}
 
 	public int getPowerPlayGoals() {

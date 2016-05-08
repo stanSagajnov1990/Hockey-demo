@@ -17,7 +17,7 @@ body {
 	padding: 10px;
 	font-size: 20px;
 }
-#table_info th {
+#table_info th, td {
     padding: 5px;
 }
 </style>
@@ -42,7 +42,7 @@ body {
 		</div>
 	</div>
 	<div style="padding: 20px; border-top: thick solid #C0C0C0;">
-		<div id="personal_info" style="width:40%; float: left; display: inline-block;">
+		<div id="personal_info" style="width:35%; float: left; display: inline-block;">
 			<span style="display: inline-block;"><b>${ player.name}</b></span> 
 			<span style="display: block;"><b>Born: </b>${player.birthdate }</span> 
 			<span style="display: block;"><b>Birthplace: </b>${player.birthplace }</span>
@@ -56,76 +56,177 @@ body {
 						<th><span>G</span></th>
 						<th><span>A</span></th>
 						<th><span>P</span></th>
+						<th><span>+/-</span></th>
+						<th><span>PIM</span></th>
+						<th><span>PPG</span></th>
+						<th><span>PPP</span></th>
+						<th><span>SHG</span></th>
+						<th><span>SHP</span></th>
+						<th><span>GWG</span></th>
+						<th><span>OTG</span></th>
+						<th><span>S</span></th>
+						<th><span>S%</span></th>
 					</tr>
 				</thead>
 				<tbody>
 					<tr>	
-						<th>
+						<td>
 							<span>2015-2016 Playoffs</span>
-						</th>
-						<th>
-							<span>7</span>
-						</th>
-						<th>
-							<span>1</span>
-						</th>
-						<th>
-							<span>6</span>
-						</th>
-						<th>
-							<span>7</span>
-						</th>
+						</td>
+						<td>
+							<span>${playoffStatistics.gamesPlayed }</span>
+						</td>
+						<td>
+							<span>${playoffStatistics.goals }</span>
+						</td>
+						<td>
+							<span>${playoffStatistics.assists }</span>
+						</td>
+						<td>
+							<span>${playoffStatistics.points }</span>
+						</td>
+						<td>
+							<span>${playoffStatistics.plusminus }</span>
+						</td>
+						<td>
+							<span>${playoffStatistics.penaltyInMinutes }</span>
+						</td>
+						<td>
+							<span>${playoffStatistics.powerPlayGoals }</span>
+						</td>
+						<td>
+							<span>${playoffStatistics.powerPlayPoints }</span>
+						</td>
+						<td>
+							<span>${playoffStatistics.shortHandedGoals }</span>
+						</td>
+						<td>
+							<span>${playoffStatistics.shortHandedPoints }</span>
+						</td>
+						<td>
+							<span>${playoffStatistics.gameWinningGoals }</span>
+						</td>
+						<td>
+							<span>${playoffStatistics.overtimeGoals }</span>
+						</td>
+						<td>
+							<span>${playoffStatistics.shots }</span>
+						</td>
+						<td>
+							<span>${playoffStatistics.shotPercentage }</span>
+						</td>
 					</tr>
 					<tr>	
-						<th>
+						<td>
 							<span>Career Playoffs</span>
-						</th>
-						<th>
+						</td>
+						<td>
 							<span>123</span>
-						</th>
-						<th>
+						</td>
+						<td>
 							<span>49</span>
-						</th>
-						<th>
+						</td>
+						<td>
 							<span>72</span>
-						</th>
-						<th>
+						</td>
+						<td>
 							<span>121</span>
-						</th>
+						</td>
 					</tr>
 					<tr>
-						<th>
+						<td>
 							<span>2015-2016</span>
-						</th>
-						<th>
-							<span>79</span>
-						</th>
-						<th>
-							<span>50</span>
-						</th>
-						<th>
-							<span>21</span>
-						</th>
-						<th>
-							<span>71</span>
-						</th>
+						</td>
+						<td>
+							<span>${seasonStatistics.gamesPlayed }</span>
+						</td>
+						<td>
+							<span>${seasonStatistics.goals }</span>
+						</td>
+						<td>
+							<span>${seasonStatistics.assists }</span>
+						</td>
+						<td>
+							<span>${seasonStatistics.points }</span>
+						</td>
+						<td>
+							<span>${seasonStatistics.plusminus }</span>
+						</td>
+						<td>
+							<span>${seasonStatistics.penaltyInMinutes }</span>
+						</td>
+						<td>
+							<span>${seasonStatistics.powerPlayGoals }</span>
+						</td>
+						<td>
+							<span>${seasonStatistics.powerPlayPoints }</span>
+						</td>
+						<td>
+							<span>${seasonStatistics.shortHandedGoals }</span>
+						</td>
+						<td>
+							<span>${seasonStatistics.shortHandedPoints }</span>
+						</td>
+						<td>
+							<span>${seasonStatistics.gameWinningGoals }</span>
+						</td>
+						<td>
+							<span>${seasonStatistics.overtimeGoals }</span>
+						</td>
+						<td>
+							<span>${seasonStatistics.shots }</span>
+						</td>
+						<td>
+							<span>${seasonStatistics.shotPercentage }</span>
+						</td>
 					</tr>
 					<tr>
-						<th>
+						<td>
 							<span>NHL Career</span>
-						</th>
-						<th>
-							<span>658</span>
-						</th>
-						<th>
-							<span>251</span>
-						</th>
-						<th>
-							<span>412</span>
-						</th>
-						<th>
-							<span>663</span>
-						</th>
+						</td>
+						<td>
+							<span>${sumOfSeasons[0]}</span>
+						</td>
+						<td>
+							<span>${sumOfSeasons[1]}</span>
+						</td>
+						<td>
+							<span>${sumOfSeasons[2]}</span>
+						</td>
+						<td>
+							<span>${sumOfSeasons[3]}</span>
+						</td>
+						<td>
+							<span>${sumOfSeasons[4]}</span>
+						</td>
+						<td>
+							<span>${sumOfSeasons[5]}</span>
+						</td>
+						<td>
+							<span>${sumOfSeasons[6]}</span>
+						</td>
+						<td>
+							<span>${sumOfSeasons[7]}</span>
+						</td>
+						<td>
+							<span>${sumOfSeasons[8]}</span>
+						</td>
+						<td>
+							<span>${sumOfSeasons[9]}</span>
+						</td>
+						<td>
+							<span>${sumOfSeasons[10]}</span>
+						</td>
+						<td>
+							<span>${sumOfSeasons[11]}</span>
+						</td>
+						<td>
+							<span>${sumOfSeasons[12]}</span>
+						</td>
+						<%//TODO round up to 2 decimal points %>
+						<td>
+							<span>${sumOfSeasons[15]}</span>
+						</td>
 					</tr>
 				</tbody>
 			</table>

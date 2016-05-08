@@ -22,7 +22,8 @@ public class PlayerDisplayController extends AbstractController {
 
 		InitialContext context = new InitialContext();
 		PlayerEJB playerEJB = (PlayerEJB) context.lookup("java:app/Hockey-ejb/PlayerEJB");
-		Player player = playerEJB.getPlayerById(Long.valueOf(req.getParameter("id")));
+		Long id = Long.valueOf(req.getParameter("id"));
+		Player player = playerEJB.getPlayerById(id);
 		model.addObject("player", player);
 		List<PlayerStatistics> playerStatistics = player.getPlayerStatistics();
 		
@@ -31,9 +32,14 @@ public class PlayerDisplayController extends AbstractController {
 				model.addObject("seasonStatistics", statistic);
 			}
 			if(statistic.getYear() == 2015 && statistic.isPlayoffStatistics()){
-				model.addObject("playoffsStatistics", statistic);
+				model.addObject("playoffStatistics", statistic);
 			} 
 		}
+		Object[] resultSeason = playerEJB.getSumOfPlayerStatistics(player, false);
+		Object[] resultPlayoff = playerEJB.getSumOfPlayerStatistics(player, true);
+		
+		model.addObject("sumOfSeasons", resultSeason);
+		model.addObject("sumOfPlayoffs", resultPlayoff);
 		
 		return model;
 	}

@@ -1,10 +1,13 @@
 package com.stanislav.model;
 
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -12,9 +15,12 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.SequenceGenerator;
+import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 @NamedQueries({
 @NamedQuery(query = "SELECT p from Player p where p.name = :name", name="Player.findByName"),
@@ -51,6 +57,9 @@ public class Player {
 	private String imageUrl;
 	@Column(name="BIG_IMAGE_URL")
 	private String bigImageUrl;
+	//TODO write UnitTest for Fetch Eager and Lazy
+	@OneToMany(mappedBy="player", fetch=FetchType.EAGER)
+	private List<PlayerStatistics> playerStatistics = new ArrayList<PlayerStatistics>();
 
 	@ManyToOne
 	@JoinColumn(name = "TEAM_ID", nullable = false)
@@ -150,6 +159,14 @@ public class Player {
 	
 	public void setBigImageUrl(String bigImageUrl) {
 		this.bigImageUrl = bigImageUrl;
+	}
+	
+	public List<PlayerStatistics> getPlayerStatistics() {
+		return playerStatistics;
+	}
+	
+	public void setPlayerStatistics(List<PlayerStatistics> playerStatistics) {
+		this.playerStatistics = playerStatistics;
 	}
 
 }

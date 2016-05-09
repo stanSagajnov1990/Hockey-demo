@@ -3,8 +3,9 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans 
 	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
 
-	<bean name="/player.htm" 
-		class="controller.PlayerDisplayController" />
+	<bean name="/player.htm" class="controller.PlayerDisplayController" />
+
+	<bean name="/all_players.htm" class="controller.PlayerListController" />
 
 	<bean id="viewResolver"
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">

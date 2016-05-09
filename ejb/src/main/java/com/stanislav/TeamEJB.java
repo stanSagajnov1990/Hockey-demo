@@ -15,8 +15,10 @@ public class TeamEJB {
 	@PersistenceContext
 	private EntityManager em;
 	
+	@SuppressWarnings("unchecked")
 	public List<Team> getAllTeams(){
-		return em.createQuery("SELECT t FROM Team t ORDER BY name").getResultList();
+		Query query = em.createNamedQuery("Team.findByName");
+		return query.getResultList();
 	}
 	
 	public Team getTeamById(Long id){

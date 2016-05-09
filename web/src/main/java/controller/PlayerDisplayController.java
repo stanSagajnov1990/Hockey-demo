@@ -18,12 +18,17 @@ public class PlayerDisplayController extends AbstractController {
 	@Override
 	protected ModelAndView handleRequestInternal(HttpServletRequest req,
 			HttpServletResponse resp) throws Exception {
-		ModelAndView model = new ModelAndView("PlayerDisplayController");
+		ModelAndView model = new ModelAndView("PlayerDisplay");
 
 		InitialContext context = new InitialContext();
 		PlayerEJB playerEJB = (PlayerEJB) context.lookup("java:app/Hockey-ejb/PlayerEJB");
 		Long id = Long.valueOf(req.getParameter("id"));
 		Player player = playerEJB.getPlayerById(id);
+		
+		if(player == null){
+			return new ModelAndView("redirect:/all_players.htm");
+		}
+		
 		model.addObject("player", player);
 		List<PlayerStatistics> playerStatistics = player.getPlayerStatistics();
 		

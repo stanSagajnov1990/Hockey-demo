@@ -1,12 +1,13 @@
 package com.stanislav;
 
+import java.util.List;
+
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import com.stanislav.model.Player;
-import com.stanislav.model.PlayerStatistics;
 
 @Stateless
 public class PlayerEJB {
@@ -52,4 +53,11 @@ public class PlayerEJB {
 		Object[] result = (Object[])query.getSingleResult();
 		return result;
 	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Player> getAllPlayers(){
+		Query query = em.createNamedQuery("Player.findAll");
+		return query.getResultList();
+	}
+	
 }

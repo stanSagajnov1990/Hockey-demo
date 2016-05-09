@@ -1,4 +1,4 @@
-package com.stanislav.bean;
+package com.stanislav.bean.game;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,9 +18,9 @@ import com.stanislav.model.Game;
 import com.stanislav.model.Player;
 import com.stanislav.model.Team;
 
-@ManagedBean(name = "createGame")
+@ManagedBean(name = "gameCreateMB")
 @RequestScoped
-public class CreateGameBean {
+public class GameCreateBean {
 
 	@EJB
 	private TeamEJB teamEJB;

@@ -1,4 +1,4 @@
-package com.stanislav.bean;
+package com.stanislav.bean.player;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,9 +18,9 @@ import com.stanislav.TeamEJB;
 import com.stanislav.model.Player;
 import com.stanislav.model.Team;
 
-@ManagedBean(name = "editPlayer")
+@ManagedBean(name = "playerEditMB")
 @RequestScoped
-public class EditPlayerBean {
+public class PlayerEditBean {
 
 	@EJB
 	private PlayerEJB playerEJB;

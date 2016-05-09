@@ -18,35 +18,35 @@
 
 		<h:outputLabel for="homeTeam" value="Home-Team: " />
 
-		<h:selectOneMenu id="homeTeam" value="#{createGame.homeTeam}"
+		<h:selectOneMenu id="homeTeam" value="#{gameCreateMB.homeTeam}"
 			required="true">
 			<f:selectItem itemLabel="Select One Team" itemValue="" />
-			<f:selectItems value="#{createGame.teams}" />
+			<f:selectItems value="#{gameCreateMB.teams}" />
 		</h:selectOneMenu> :
 		
 		<h:outputLabel for="awayTeam" value="Away-Team: " />
-		<h:selectOneMenu id="awayTeam" value="#{createGame.awayTeam}"
+		<h:selectOneMenu id="awayTeam" value="#{gameCreateMB.awayTeam}"
 			required="true">
 			<f:selectItem itemLabel="Select One Team" itemValue="" />
-			<f:selectItems value="#{createGame.teams}" />
+			<f:selectItems value="#{gameCreateMB.teams}" />
 		</h:selectOneMenu>
 
 		<h:outputLabel for="homeTeamScore" value="    "/>
 		<h:inputText id="homeTeamScore"
-			value="#{createGame.game.homeTeamScore}" size="5"/>
+			value="#{gameCreateMB.game.homeTeamScore}" size="5"/>
 		<h:outputLabel for="homeTeamScore" value="    "/>
 		<h:inputText id="awayTeamScore"
-			value="#{createGame.game.awayTeamScore}"  size="5"/>
+			value="#{gameCreateMB.game.awayTeamScore}"  size="5"/>
 		<br />
 		<br />
 		<h:outputLabel for="date" value="Date: "/>
-		<h:inputText id="date" value="#{createGame.game.gameDate}" size="20"
+		<h:inputText id="date" value="#{gameCreateMB.game.gameDate}" size="20"
 			required="true">
 
 			<f:convertDateTime pattern="MMMM d, yyyy" locale="en" />
 		</h:inputText>
 
-		<h:commandButton value="Save" action="#{createGame.save}">
+		<h:commandButton value="Save" action="#{gameCreateMB.save}">
 		</h:commandButton>
 	</h:form>
 

@@ -17,8 +17,7 @@ public class TeamEJB {
 	
 	@SuppressWarnings("unchecked")
 	public List<Team> getAllTeams(){
-		Query query = em.createNamedQuery("Team.findByName");
-		return query.getResultList();
+		return em.createQuery("SELECT t FROM Team t ORDER BY name").getResultList();
 	}
 	
 	public Team getTeamById(Long id){

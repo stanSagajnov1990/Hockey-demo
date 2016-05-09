@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Edit Player:</title>
+</h:head>
+<h:body>
+	<h1>Edit Player:</h1>
+	<h:form id="form">
+		<h:dataTable value="#{playerListMB.players}" var="player"
+			styleClass="playerTable" headerClass="playerTableHeader"
+			rowClasses="playerTableOddRow,playerTableEvenRow">
+			<h:column>
+				<f:facet name="header">Name</f:facet>    				
+      #{player.name}
+   </h:column>
+			<h:column>
+				<f:facet name="header">Salary</f:facet>
+      #{player.team.name}
+   </h:column>
+			<h:column>
+				<f:facet name="header">Department</f:facet>
+      #{player.position}
+   </h:column>
+			<h:column>
+				<f:facet name="header">Age</f:facet>
+      #{player.age}
+   </h:column>
+			<h:column>
+				<h:link value="Edit " outcome="/player_edit">
+					<f:param name="id" value="${player.id}" />
+				</h:link>
+			</h:column>
+		</h:dataTable>
+	</h:form>
+</h:body>
+</html>

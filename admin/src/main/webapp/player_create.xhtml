@@ -17,39 +17,39 @@
 			errorStyle="color:red;margin:8px;" />
 		<h:panelGrid columns="2">
 			<h:outputLabel for="playerName" value="Name"></h:outputLabel>
-			<h:inputText id="playerName" value="#{createPlayer.player.name}" />
+			<h:inputText id="playerName" value="#{playerCreateMB.player.name}" />
 			<h:outputLabel for="playerPosition" value="Position"></h:outputLabel>
 			<h:inputText id="playerPosition"
-				value="#{createPlayer.player.position}" />
+				value="#{playerCreateMB.player.position}" />
 			<h:outputLabel for="playerNumber" value="Number:"></h:outputLabel>
-			<h:inputText id="playerNumber" value="#{createPlayer.player.number}" />
+			<h:inputText id="playerNumber" value="#{playerCreateMB.player.number}" />
 			<h:outputLabel for="playerAge" value="Age:"></h:outputLabel>
-			<h:inputText id="playerAge" value="#{createPlayer.player.age}" />
+			<h:inputText id="playerAge" value="#{playerCreateMB.player.age}" />
 			<h:outputLabel for="playerWeight" value="Weight:"></h:outputLabel>
-			<h:inputText id="playerWeight" value="#{createPlayer.player.weight}" />
+			<h:inputText id="playerWeight" value="#{playerCreateMB.player.weight}" />
 			<h:outputLabel for="playerHeight" value="Height:"></h:outputLabel>
-			<h:inputText id="playerHeight" value="#{createPlayer.player.height}" />
+			<h:inputText id="playerHeight" value="#{playerCreateMB.player.height}" />
 			<h:outputLabel for="playerBirthdate" value="Birthdate:"></h:outputLabel>
 			<h:inputText id="playerBirthdate"
-				value="#{createPlayer.player.birthdate}">
+				value="#{playerCreateMB.player.birthdate}">
 				<f:convertDateTime pattern="MMMM d, yyyy" locale="en" />
 			</h:inputText>
 			<h:outputLabel for="playerBirthplace" value="Birthplace:"></h:outputLabel>
 			<h:inputText id="playerBirthplace"
-				value="#{createPlayer.player.birthplace}" />
+				value="#{playerCreateMB.player.birthplace}" />
 			<h:outputLabel for="playerImageUrl" value="Image Url:"></h:outputLabel>
 			<h:inputText id="playerImageUrl"
-				value="#{createPlayer.player.imageUrl}" size="80" />
+				value="#{playerCreateMB.player.imageUrl}" size="80" />
 			<h:outputLabel for="playerBigImageUrl" value="Big Image Url:"></h:outputLabel>
 			<h:inputText id="playerBigImageUrl"
-				value="#{createPlayer.player.bigImageUrl}" size="80" />
+				value="#{playerCreateMB.player.bigImageUrl}" size="80" />
 			<h:outputLabel for="playerTeams" value="Team*:" />
-			<h:selectOneMenu id="playerTeams" value="#{createPlayer.team_id}"
+			<h:selectOneMenu id="playerTeams" value="#{playerCreateMB.team_id}"
 				required="true">
 				<f:selectItem itemLabel="Select One Team" itemValue="" />
-				<f:selectItems value="#{createPlayer.teams}" />
+				<f:selectItems value="#{playerCreateMB.teams}" />
 			</h:selectOneMenu>
-			<h:commandButton value="Save" action="#{createPlayer.save}">
+			<h:commandButton value="Save" action="#{playerCreateMB.save}">
 			</h:commandButton>
 		</h:panelGrid>
 	</h:form>

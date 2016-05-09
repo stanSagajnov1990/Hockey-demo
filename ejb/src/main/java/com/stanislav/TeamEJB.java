@@ -21,10 +21,7 @@ public class TeamEJB {
 	}
 	
 	public Team getTeamById(Long id){
-		Query query = em.createQuery("SELECT t FROM Team t WHERE team_id = :id");
-		query.setParameter("id", id);
-		Team team = (Team) query.getSingleResult();
-		return team;
+		return em.find(Team.class, id);
 	}
 
 }

@@ -34,10 +34,6 @@ public class EditPlayerBean {
 		String id = (String) FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("id");
 		if (!StringUtils.isBlank(id)) {
 			player = playerEJB.getPlayerById(Long.valueOf(id));
-			SimpleDateFormat sdf = new SimpleDateFormat("MMM d, yyyy", Locale.ENGLISH);
-			if (player.getBirthdate() != null)
-				birthdate = sdf.format(player.getBirthdate());
-
 			if (player.getTeam() != null) {
 				team_id = player.getTeam().getId();
 			}
@@ -56,7 +52,6 @@ public class EditPlayerBean {
 
 	private List<SelectItem> teams = new ArrayList<SelectItem>();
 	private long team_id;
-	private String birthdate = new String();
 
 	public long getTeam_id() {
 		return team_id;
@@ -72,14 +67,6 @@ public class EditPlayerBean {
 
 	public List<SelectItem> getTeams() {
 		return teams;
-	}
-
-	public String getBirthdate() {
-		return birthdate;
-	}
-
-	public void setBirthdate(String birthdate) {
-		this.birthdate = birthdate;
 	}
 
 	public Player getPlayer() {

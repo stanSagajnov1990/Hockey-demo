@@ -1,20 +1,15 @@
 package com.stanislav.bean;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.model.SelectItem;
-
-import org.apache.commons.lang3.StringUtils;
 
 import com.stanislav.PlayerEJB;
 import com.stanislav.TeamEJB;
@@ -78,6 +73,11 @@ public class CreatePlayerBean {
 		Team team = teamEJB.getTeamById(team_id);
 		player.setTeam(team);
 		playerEJB.savePlayer(player);
+		
+		
+		
+		FacesContext.getCurrentInstance().addMessage(null,
+				new FacesMessage(FacesMessage.SEVERITY_INFO, "Create successful", "A new user was created successfully."));
 	}
 	
 	

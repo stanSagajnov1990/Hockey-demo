@@ -11,9 +11,10 @@
 	<title>Edit Player: #{editPlayer.player.name}</title>
 </h:head>
 <h:body>
-	<h1>Hello World PrimeFaces</h1>
+	<h1>Edit Player: #{editPlayer.player.name}</h1>
 
 	<h:form id="form">
+		<h:messages infoStyle="color:green;margin:8px;" errorStyle="color:red;margin:8px;"  />
 		<input type="hidden" name="id" value="${param.id}" />
 		<h:panelGrid columns="2">
 			<h:outputLabel for="playerName" value="Name:" />
@@ -32,7 +33,7 @@
 			<h:outputLabel for="playerBirthdate" value="Birthdate:" />
 			<h:inputText id="playerBirthdate"
 				value="#{editPlayer.player.birthdate}">
-				<f:convertDateTime pattern="MMM d, yyyy" locale="en" />
+				<f:convertDateTime pattern="MMMM d, yyyy" locale="en" />
 			</h:inputText>
 			<h:outputLabel for="playerBirthplace" value="Birthplace:" />
 			<h:inputText id="playerBirthplace"

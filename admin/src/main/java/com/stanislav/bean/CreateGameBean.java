@@ -5,8 +5,10 @@ import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.context.FacesContext;
 import javax.faces.model.SelectItem;
 
 import com.stanislav.GameEJB;
@@ -21,19 +23,10 @@ import com.stanislav.model.Team;
 public class CreateGameBean {
 
 	@EJB
-	private PlayerEJB playerEJB;
-
-	@EJB
 	private TeamEJB teamEJB;
 
 	@EJB
 	private GameEJB gameEJB;
-
-	private Player player = new Player() {
-		{
-			setName("Alex Ovechkin");
-		}
-	};
 
 	private Game game = new Game();
 
@@ -75,26 +68,6 @@ public class CreateGameBean {
 		this.awayTeam = awayTeam;
 	}
 
-	@PostConstruct
-	public void init() {
-		List<Team> teams = teamEJB.getAllTeams();
-
-		for (Team team : teams) {
-			SelectItem item = new SelectItem();
-			item.setLabel(team.getName());
-			item.setValue(team.getId());
-			this.teams.add(item);
-		}
-	}
-
-	public Player getPlayer() {
-		return player;
-	}
-
-	public void setPlayer(Player player) {
-		this.player = player;
-	}
-
 	public List<SelectItem> getTeams() {
 		return teams;
 	}
@@ -103,14 +76,41 @@ public class CreateGameBean {
 		this.teams = teams;
 	}
 
-	public void save() {
-		System.out.println("TEST");
+	@PostConstruct
+	public void init() {
+		try {
+			List<Team> teams = teamEJB.getAllTeams();
 
-		Team homeTeam = teamEJB.getTeamById(Long.valueOf(this.homeTeam));
-		Team awayTeam = teamEJB.getTeamById(Long.valueOf(this.awayTeam));
-		game.setHomeTeam(homeTeam);
-		game.setAwayTeam(awayTeam);
-		gameEJB.saveGame(game);
+			for (Team team : teams) {
+				SelectItem item = new SelectItem();
+				item.setLabel(team.getName());
+				item.setValue(team.getId());
+				this.teams.add(item);
+			}
+		} catch (Exception e) {
+			FacesContext.getCurrentInstance().addMessage(null,
+					new FacesMessage(FacesMessage.SEVERITY_ERROR,
+							"Internal Error. An error in the database may be the cause.",
+							"Internal Error. An error in the database may be the cause."));
+			e.printStackTrace();
+		}
+	}
+
+	public void save() {
+		try {
+			Team homeTeam = teamEJB.getTeamById(Long.valueOf(this.homeTeam));
+			Team awayTeam = teamEJB.getTeamById(Long.valueOf(this.awayTeam));
+			game.setHomeTeam(homeTeam);
+			game.setAwayTeam(awayTeam);
+			gameEJB.saveGame(game);
+
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,
+					"Create successful", "A new game was created successfully."));
+		} catch (Exception e) {
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
+					"Create unsuccessful", "Internal Error. No new game was created."));
+		}
+
 	}
 
 }

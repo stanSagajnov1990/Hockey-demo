@@ -7,12 +7,14 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 
 <h:head>
+	<title>Create new Player</title>
 </h:head>
 <h:body>
-	<h1>Hello World PrimeFaces</h1>
+	<h1>Create new Player</h1>
 
 	<h:form id="form">
-		<h:messages infoStyle="color:green;margin:8px;" style="color:red;margin:8px;"  />
+		<h:messages infoStyle="color:green;margin:8px;"
+			errorStyle="color:red;margin:8px;" />
 		<h:panelGrid columns="2">
 			<h:outputLabel for="playerName" value="Name"></h:outputLabel>
 			<h:inputText id="playerName" value="#{createPlayer.player.name}" />
@@ -28,8 +30,9 @@
 			<h:outputLabel for="playerHeight" value="Height:"></h:outputLabel>
 			<h:inputText id="playerHeight" value="#{createPlayer.player.height}" />
 			<h:outputLabel for="playerBirthdate" value="Birthdate:"></h:outputLabel>
-			<h:inputText id="playerBirthdate" value="#{createPlayer.player.birthdate}" > 
-				<f:convertDateTime pattern="MMM d, yyyy" locale="en"/>
+			<h:inputText id="playerBirthdate"
+				value="#{createPlayer.player.birthdate}">
+				<f:convertDateTime pattern="MMMM d, yyyy" locale="en" />
 			</h:inputText>
 			<h:outputLabel for="playerBirthplace" value="Birthplace:"></h:outputLabel>
 			<h:inputText id="playerBirthplace"

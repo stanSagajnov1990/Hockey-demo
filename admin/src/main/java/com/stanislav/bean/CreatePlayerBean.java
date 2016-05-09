@@ -16,70 +16,77 @@ import com.stanislav.TeamEJB;
 import com.stanislav.model.Player;
 import com.stanislav.model.Team;
 
-
-
-@ManagedBean(name="createPlayer")
+@ManagedBean(name = "createPlayer")
 @RequestScoped
 public class CreatePlayerBean {
-	
-    @EJB
+
+	@EJB
 	private PlayerEJB playerEJB;
-    
-    @EJB
-    private TeamEJB teamEJB;
-    
+
+	@EJB
+	private TeamEJB teamEJB;
+
 	private Player player = new Player();
-	
 	private List<SelectItem> teams = new ArrayList<SelectItem>();
 	private long team_id;
 
 	public Long getTeam_id() {
 		return team_id;
 	}
-	
+
 	public void setTeam_id(Long team_id) {
 		this.team_id = team_id;
 	}
-	
+
 	@PostConstruct
-	public void init(){
-		List<Team> teams = teamEJB.getAllTeams();
-		
-		for(Team team : teams){
-			SelectItem item = new SelectItem();
-			item.setLabel(team.getName());
-			item.setValue(team.getId());
-			this.teams.add(item);
+	public void init() {
+		try {
+			List<Team> teams = teamEJB.getAllTeams();
+
+			for (Team team : teams) {
+				SelectItem item = new SelectItem();
+				item.setLabel(team.getName());
+				item.setValue(team.getId());
+				this.teams.add(item);
+			}
+		} catch (Exception e) {
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
+					"Internal Error. An error in the database may be the cause.", "Internal Error. An error in the database may be the cause."));
+			e.printStackTrace();
 		}
+
 	}
-	
+
 	public Player getPlayer() {
 		return player;
 	}
-	
+
 	public void setPlayer(Player player) {
 		this.player = player;
 	}
-	
+
 	public List<SelectItem> getTeams() {
 		return teams;
 	}
-	
+
 	public void setTeams(List<SelectItem> teams) {
 		this.teams = teams;
 	}
-	
-	public void save(){
-		Team team = teamEJB.getTeamById(team_id);
-		player.setTeam(team);
-		playerEJB.savePlayer(player);
-		
-		
-		
-		FacesContext.getCurrentInstance().addMessage(null,
-				new FacesMessage(FacesMessage.SEVERITY_INFO, "Create successful", "A new user was created successfully."));
+
+	public void save() {
+		try {
+			Team team = teamEJB.getTeamById(team_id);
+			player.setTeam(team);
+			playerEJB.savePlayer(player);
+
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,
+					"Create successful", "A new player was created successfully."));
+		} catch (Exception e) {
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
+					"Create unsuccessful", "Internal Error. No new player was created."));
+			e.printStackTrace();
+		}
+
 	}
-	
-	
-	
+
 }

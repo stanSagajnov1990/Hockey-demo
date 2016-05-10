@@ -9,13 +9,17 @@
 </head>
 <body>
 
+	<h2>All Players</h2>
 
+	<table>
 		<c:forEach var="listEntry" items="${players}">
-			<c:out value="${listEntry.name}" />
-			<a href="player.htm?id=${listEntry.id }" />View</a>
-			<br />
+			<tr>
+			<td><c:out value="${listEntry.name}" /></td>
+			<td><c:out value="${listEntry.team.name}" /></td>
+			<td><a href="player.htm?id=${listEntry.id }" >View</a></td>
+			<tr>
 		</c:forEach>
-
+	</table>
 
 </body>
 </html>

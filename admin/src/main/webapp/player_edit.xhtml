@@ -25,8 +25,13 @@
 			<h:outputLabel for="playerName" value="Name:" />
 			<h:inputText id="playerName" value="#{playerEditMB.player.name}" />
 			<h:outputLabel for="playerPosition" value="Position:" />
-			<h:inputText id="playerPosition"
-				value="#{playerEditMB.player.position}" />
+			<h:selectOneMenu id="playerPosition" value="#{playerEditMB.player.position}">
+				<f:selectItem itemValue="LW" itemLabel="Left Wing" />
+				<f:selectItem itemValue="RW" itemLabel="Right Wing" />
+				<f:selectItem itemValue="C" itemLabel="Center" />
+				<f:selectItem itemValue="D" itemLabel="Defenseman" />
+				<f:selectItem itemValue="G" itemLabel="Goalie" />
+			</h:selectOneMenu>
 			<h:outputLabel for="playerNumber" value="Number:" />
 			<h:inputText id="playerNumber" value="#{playerEditMB.player.number}" />
 			<h:outputLabel for="playerAge" value="Age:" />

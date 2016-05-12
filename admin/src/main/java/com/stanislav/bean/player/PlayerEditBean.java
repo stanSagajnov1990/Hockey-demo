@@ -47,6 +47,11 @@ public class PlayerEditBean {
 				item.setValue(team.getId());
 				this.teams.add(item);
 			}
+			
+			int height = player.getHeight();
+			int feet = height / 12;
+			String formattedHeight = ""+feet+"' "+height%12+"''";
+			
 		} catch (Exception e) {
 			FacesContext.getCurrentInstance().addMessage(null,
 					new FacesMessage(FacesMessage.SEVERITY_ERROR,

@@ -16,7 +16,7 @@ body {
 #table_info span {
 	padding: 10px;
 	font-size: 20px;
-}
+} 
 #table_info th, td {
     padding: 5px;
 }

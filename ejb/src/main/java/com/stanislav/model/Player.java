@@ -24,9 +24,8 @@ import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
 @NamedQueries({
-@NamedQuery(query = "SELECT p from Player p where p.name = :name", name="Player.findByName"),
-@NamedQuery(query = "SELECT p FROM Player p", name="Player.findAll")
-
+	@NamedQuery(query = "SELECT p from Player p where p.name = :name", name="Player.findByName"),
+	@NamedQuery(query = "SELECT p FROM Player p", name="Player.findAll")
 })
 
 
@@ -59,7 +58,7 @@ public class Player {
 	@Column(name="BIG_IMAGE_URL")
 	private String bigImageUrl;
 	//TODO write UnitTest for Fetch Eager and Lazy
-	@OneToMany(mappedBy="player", fetch=FetchType.EAGER)
+	@OneToMany(mappedBy="player")
 	private List<PlayerStatistics> playerStatistics = new ArrayList<PlayerStatistics>();
 	@Transient
 	private String formattedHeight;

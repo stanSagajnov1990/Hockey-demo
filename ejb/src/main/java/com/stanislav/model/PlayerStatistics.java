@@ -11,6 +11,11 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
+@NamedQueries({
+	@NamedQuery(query = "SELECT ps FROM PlayerStatistics ps WHERE ps.player.id = :PLAYER_ID", name="PlayerStatistics.findAllForPlayer")
+})
+
+
 @Entity
 @Table(name="PLAYER_STATISTICS")
 public class PlayerStatistics {

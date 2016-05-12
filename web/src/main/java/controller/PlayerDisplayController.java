@@ -28,7 +28,7 @@ public class PlayerDisplayController extends AbstractController {
 		PlayerEJB playerEJB = (PlayerEJB) context.lookup("java:app/Hockey-ejb/PlayerEJB");
 		Long id = Long.valueOf(req.getParameter("id"));
 		logger.info("show User with id: "+id);
-		Player player = playerEJB.getPlayerById(id);
+		Player player = playerEJB.getPlayerByIdWithEagerStatistics(id);
 		
 		if(player == null){
 			return new ModelAndView("redirect:/all_players.htm");

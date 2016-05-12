@@ -31,14 +31,18 @@
 			<f:selectItems value="#{gameCreateMB.teams}" />
 		</h:selectOneMenu>
 
-		<h:outputLabel for="homeTeamScore" value="    "/>
+		<h:outputText for="homeTeamScore" value=" "/>
 		<h:inputText id="homeTeamScore"
 			value="#{gameCreateMB.game.homeTeamScore}" size="5"/>
-		<h:outputLabel for="homeTeamScore" value="    "/>
+		<h:outputText for="homeTeamScore" value=" "/>
 		<h:inputText id="awayTeamScore"
 			value="#{gameCreateMB.game.awayTeamScore}"  size="5"/>
 		<br />
 		<br />
+		<h:selectBooleanCheckbox id="overtimeWin" value="#{gameCreateMB.game.winInOvertime}" /> <h:outputLabel for="overtimeWin" value=" Overtime "/>
+		<h:selectBooleanCheckbox id="shootoutWin" value="#{gameCreateMB.game.winInShootout}" /> <h:outputLabel for="shootoutWin" value=" Shootout" />
+		
+		<h:outputText style="white-space:pre;" value="           "/>
 		<h:outputLabel for="date" value="Date: "/>
 		<h:inputText id="date" value="#{gameCreateMB.game.gameDate}" size="20"
 			required="true">

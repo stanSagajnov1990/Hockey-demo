@@ -37,7 +37,7 @@ body {
 				style="font-size: 35px; font-family: Sintony; font-weight: bold; margin-top: 10px; margin-left: auto; margin-right: auto; display: block; width: auto;">
 				${player.name } | #${player.number} </span> <span
 				style="font-size: 20px; font-weight: bold; color: #868686; display: block; margin-top: 10px;">
-				${player.position } | ${player.weight} lb | Age: ${player.age } |
+				${player.position } | ${player.formattedHeight}  | ${player.weight} lb | Age: ${player.age } |
 				${player.team.name }</span>
 		</div>
 	</div>

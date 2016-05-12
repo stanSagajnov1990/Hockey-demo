@@ -18,6 +18,7 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
@@ -60,7 +61,10 @@ public class Player {
 	//TODO write UnitTest for Fetch Eager and Lazy
 	@OneToMany(mappedBy="player", fetch=FetchType.EAGER)
 	private List<PlayerStatistics> playerStatistics = new ArrayList<PlayerStatistics>();
-
+	@Transient
+	private String formattedHeight;
+	
+	
 	@ManyToOne
 	@JoinColumn(name = "TEAM_ID", nullable = false)
 	private Team team;
@@ -169,4 +173,16 @@ public class Player {
 		this.playerStatistics = playerStatistics;
 	}
 
+	public String getFormattedHeight() {
+		if(formattedHeight == null){
+			int feet = height / 12;
+			formattedHeight = ""+feet+"' "+height%12+"''";
+		}
+		return formattedHeight;
+	}
+	
+	public void setFormattedHeight(String formattedHeight) {
+		this.formattedHeight = formattedHeight;
+	}
+	
 }

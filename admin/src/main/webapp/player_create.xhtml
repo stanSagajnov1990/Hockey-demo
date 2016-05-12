@@ -19,16 +19,26 @@
 			<h:outputLabel for="playerName" value="Name"></h:outputLabel>
 			<h:inputText id="playerName" value="#{playerCreateMB.player.name}" />
 			<h:outputLabel for="playerPosition" value="Position"></h:outputLabel>
-			<h:inputText id="playerPosition"
-				value="#{playerCreateMB.player.position}" />
+
+			<h:selectOneMenu id="playerPosition" value="#{playerCreateMB.player.position}">
+				<f:selectItem itemValue="LW" itemLabel="Left Wing" />
+				<f:selectItem itemValue="RW" itemLabel="Right Wing" />
+				<f:selectItem itemValue="C" itemLabel="Center" />
+				<f:selectItem itemValue="D" itemLabel="Defenseman" />
+				<f:selectItem itemValue="G" itemLabel="Goalie" />
+			</h:selectOneMenu>
+
 			<h:outputLabel for="playerNumber" value="Number:"></h:outputLabel>
-			<h:inputText id="playerNumber" value="#{playerCreateMB.player.number}" />
+			<h:inputText id="playerNumber"
+				value="#{playerCreateMB.player.number}" />
 			<h:outputLabel for="playerAge" value="Age:"></h:outputLabel>
 			<h:inputText id="playerAge" value="#{playerCreateMB.player.age}" />
 			<h:outputLabel for="playerWeight" value="Weight:"></h:outputLabel>
-			<h:inputText id="playerWeight" value="#{playerCreateMB.player.weight}" />
+			<h:inputText id="playerWeight"
+				value="#{playerCreateMB.player.weight}" />
 			<h:outputLabel for="playerHeight" value="Height:"></h:outputLabel>
-			<h:inputText id="playerHeight" value="#{playerCreateMB.player.height}" />
+			<h:inputText id="playerHeight"
+				value="#{playerCreateMB.player.height}" />
 			<h:outputLabel for="playerBirthdate" value="Birthdate:"></h:outputLabel>
 			<h:inputText id="playerBirthdate"
 				value="#{playerCreateMB.player.birthdate}">

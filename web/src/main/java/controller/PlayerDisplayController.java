@@ -6,6 +6,8 @@ import javax.naming.InitialContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.AbstractController;
 
@@ -15,6 +17,8 @@ import com.stanislav.model.PlayerStatistics;
 
 public class PlayerDisplayController extends AbstractController {
 
+	Logger logger = LoggerFactory.getLogger(PlayerDisplayController.class);
+	
 	@Override
 	protected ModelAndView handleRequestInternal(HttpServletRequest req,
 			HttpServletResponse resp) throws Exception {
@@ -23,6 +27,7 @@ public class PlayerDisplayController extends AbstractController {
 		InitialContext context = new InitialContext();
 		PlayerEJB playerEJB = (PlayerEJB) context.lookup("java:app/Hockey-ejb/PlayerEJB");
 		Long id = Long.valueOf(req.getParameter("id"));
+		logger.info("show User with id: "+id);
 		Player player = playerEJB.getPlayerById(id);
 		
 		if(player == null){

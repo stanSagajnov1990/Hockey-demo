@@ -23,7 +23,7 @@
 		<input type="hidden" name="id" value="${param.id}" />
 		<h:panelGrid columns="2">
 			<h:outputLabel for="playerName" value="Name:" />
-			<h:inputText id="playerName" value="#{playerEditMB.player.name}" />
+			<h:inputText id="playerName" required="true" value="#{playerEditMB.player.name}" />
 			<h:outputLabel for="playerPosition" value="Position:" />
 			<h:selectOneMenu id="playerPosition" value="#{playerEditMB.player.position}">
 				<f:selectItem itemValue="LW" itemLabel="Left Wing" />

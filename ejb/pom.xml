@@ -53,7 +53,6 @@
 			<scope>provided</scope>
 			<version>5.0.7.Final</version>
 		</dependency>
-
 	</dependencies>
 
 	<build>

@@ -17,7 +17,7 @@
 			errorStyle="color:red;margin:8px;" />
 		<h:panelGrid columns="2">
 			<h:outputLabel for="playerName" value="Name"></h:outputLabel>
-			<h:inputText id="playerName" value="#{playerCreateMB.player.name}" />
+			<h:inputText id="playerName" required="true" value="#{playerCreateMB.player.name}" />
 			<h:outputLabel for="playerPosition" value="Position"></h:outputLabel>
 
 			<h:selectOneMenu id="playerPosition" value="#{playerCreateMB.player.position}">

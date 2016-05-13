@@ -2,30 +2,43 @@ package controller;
 
 import java.util.List;
 
-import javax.naming.InitialContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.AbstractController;
 
-import com.stanislav.PlayerEJB;
 import com.stanislav.model.Player;
 import com.stanislav.model.PlayerStatistics;
+import com.stanislav.specifications.GameEJBLocal;
+import com.stanislav.specifications.PlayerEJBLocal;
 
 public class PlayerDisplayController extends AbstractController {
 
 	Logger logger = LoggerFactory.getLogger(PlayerDisplayController.class);
+	
+	private PlayerEJBLocal playerEJB;
+	private GameEJBLocal gameEJB;
+	
+	public void setPlayerEJB(PlayerEJBLocal playerEJB) {
+		this.playerEJB = playerEJB;
+	}
+	
+	public void setGameEJB(GameEJBLocal gameEJB) {
+		this.gameEJB = gameEJB;
+	}
 	
 	@Override
 	protected ModelAndView handleRequestInternal(HttpServletRequest req,
 			HttpServletResponse resp) throws Exception {
 		ModelAndView model = new ModelAndView("PlayerDisplay");
 
-		InitialContext context = new InitialContext();
-		PlayerEJB playerEJB = (PlayerEJB) context.lookup("java:app/Hockey-ejb/PlayerEJB");
+		if(!StringUtils.isNumeric(req.getParameter("id"))){
+			return new ModelAndView("redirect:/all_players.htm");
+		}
 		Long id = Long.valueOf(req.getParameter("id"));
 		logger.info("show User with id: "+id);
 		Player player = playerEJB.getPlayerByIdWithEagerStatistics(id);

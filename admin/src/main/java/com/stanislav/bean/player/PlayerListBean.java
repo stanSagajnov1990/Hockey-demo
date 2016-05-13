@@ -9,6 +9,7 @@ import javax.faces.bean.RequestScoped;
 
 import com.stanislav.PlayerEJB;
 import com.stanislav.model.Player;
+import com.stanislav.specifications.PlayerEJBLocal;
 
 @ManagedBean(name = "playerListMB")
 @RequestScoped
@@ -16,8 +17,8 @@ public class PlayerListBean {
 
 	private List<Player> players;
 
-	@EJB
-	private PlayerEJB playerEJB;
+	@EJB(lookup="java:app/Hockey-ejb/PlayerEJB")
+	private PlayerEJBLocal playerEJB;
 
 	@PostConstruct
 	public void init() {

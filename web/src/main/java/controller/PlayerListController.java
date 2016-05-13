@@ -11,15 +11,20 @@ import org.springframework.web.servlet.mvc.AbstractController;
 
 import com.stanislav.PlayerEJB;
 import com.stanislav.model.Player;
+import com.stanislav.specifications.PlayerEJBLocal;
 
 public class PlayerListController extends AbstractController {
+	
+	private PlayerEJBLocal playerEJB;
+	
+	public void setPlayerEJB(PlayerEJBLocal playerEJB) {
+		this.playerEJB = playerEJB;
+	}
 	
 	@Override
 	protected ModelAndView handleRequestInternal(HttpServletRequest arg0, HttpServletResponse arg1) throws Exception {
 		ModelAndView model = new ModelAndView("PlayerList");
 		
-		InitialContext context = new InitialContext();
-		PlayerEJB playerEJB = (PlayerEJB) context.lookup("java:app/Hockey-ejb/PlayerEJB");
 		List<Player> players = playerEJB.getAllPlayers();
 		model.addObject("players", players);
 		

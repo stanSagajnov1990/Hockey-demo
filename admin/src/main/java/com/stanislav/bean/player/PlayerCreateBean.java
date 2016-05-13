@@ -15,16 +15,18 @@ import com.stanislav.PlayerEJB;
 import com.stanislav.TeamEJB;
 import com.stanislav.model.Player;
 import com.stanislav.model.Team;
+import com.stanislav.specifications.PlayerEJBLocal;
+import com.stanislav.specifications.TeamEJBLocal;
 
 @ManagedBean(name = "playerCreateMB")
 @RequestScoped
 public class PlayerCreateBean {
 
-	@EJB
-	private PlayerEJB playerEJB;
+	@EJB(lookup="java:app/Hockey-ejb/PlayerEJB")
+	private PlayerEJBLocal playerEJB;
 
-	@EJB
-	private TeamEJB teamEJB;
+	@EJB(lookup="java:app/Hockey-ejb/TeamEJB")
+	private TeamEJBLocal teamEJB;
 
 	private Player player = new Player();
 	private List<SelectItem> teams = new ArrayList<SelectItem>();

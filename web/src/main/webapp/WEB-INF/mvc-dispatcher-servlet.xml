@@ -3,9 +3,26 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans 
 	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
 
-	<bean name="/player.htm" class="controller.PlayerDisplayController" />
+	<bean id="gameEJB"
+		class="org.springframework.ejb.access.LocalStatelessSessionProxyFactoryBean">
+		<property name="jndiName" value="java:app/Hockey-ejb/GameEJB!com.stanislav.specifications.GameEJBLocal" />
+		<property name="businessInterface" value="com.stanislav.specifications.GameEJBLocal" />
+	</bean>
+	
+	<bean id="playerEJB"
+		class="org.springframework.ejb.access.LocalStatelessSessionProxyFactoryBean">
+		<property name="jndiName" value="java:app/Hockey-ejb/PlayerEJB!com.stanislav.specifications.PlayerEJBLocal" />
+		<property name="businessInterface" value="com.stanislav.specifications.PlayerEJBLocal" />
+	</bean>
 
-	<bean name="/all_players.htm" class="controller.PlayerListController" />
+	<bean name="/player.htm" class="controller.PlayerDisplayController" >
+		<property name="gameEJB" ref="gameEJB"/>
+		<property name="playerEJB" ref="playerEJB"/>
+	</bean>
+
+	<bean name="/all_players.htm" class="controller.PlayerListController" >
+		<property name="playerEJB" ref="playerEJB" />
+	</bean>
 
 	<bean id="viewResolver"
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">

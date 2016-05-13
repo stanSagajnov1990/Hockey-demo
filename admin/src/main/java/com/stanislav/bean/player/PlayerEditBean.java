@@ -17,23 +17,25 @@ import com.stanislav.PlayerEJB;
 import com.stanislav.TeamEJB;
 import com.stanislav.model.Player;
 import com.stanislav.model.Team;
+import com.stanislav.specifications.PlayerEJBLocal;
+import com.stanislav.specifications.TeamEJBLocal;
 
 @ManagedBean(name = "playerEditMB")
 @RequestScoped
 public class PlayerEditBean {
 
-	@EJB
-	private PlayerEJB playerEJB;
+	@EJB(lookup="java:app/Hockey-ejb/PlayerEJB")
+	private PlayerEJBLocal playerEJB;
 
-	@EJB
-	private TeamEJB teamEJB;
+	@EJB(lookup="java:app/Hockey-ejb/TeamEJB")
+	private TeamEJBLocal teamEJB;
 
 	@PostConstruct
 	public void init() {
 		try {
 			String id = (String) FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap()
 					.get("id");
-			if (!StringUtils.isBlank(id)) {
+			if (!StringUtils.isBlank(id) /*|| !StringUtils.isNumeric(id) */) {
 				player = playerEJB.getPlayerById(Long.valueOf(id));
 				if (player.getTeam() != null) {
 					team_id = player.getTeam().getId();
@@ -47,11 +49,6 @@ public class PlayerEditBean {
 				item.setValue(team.getId());
 				this.teams.add(item);
 			}
-			
-			int height = player.getHeight();
-			int feet = height / 12;
-			String formattedHeight = ""+feet+"' "+height%12+"''";
-			
 		} catch (Exception e) {
 			FacesContext.getCurrentInstance().addMessage(null,
 					new FacesMessage(FacesMessage.SEVERITY_ERROR,

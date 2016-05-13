@@ -8,13 +8,12 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
-import org.hibernate.Session;
-
 import com.stanislav.model.Player;
 import com.stanislav.model.PlayerStatistics;
+import com.stanislav.specifications.PlayerEJBLocal;
 
 @Stateless
-public class PlayerEJB {
+public class PlayerEJB implements PlayerEJBLocal{
 
 	@PersistenceContext
 	private EntityManager em;
@@ -33,7 +32,7 @@ public class PlayerEJB {
 		}
 		return player;
 	}
-
+	
 	public void savePlayer(Player player) {
 		em.persist(player);
 	}

@@ -17,16 +17,18 @@ import com.stanislav.TeamEJB;
 import com.stanislav.model.Game;
 import com.stanislav.model.Player;
 import com.stanislav.model.Team;
+import com.stanislav.specifications.GameEJBLocal;
+import com.stanislav.specifications.TeamEJBLocal;
 
 @ManagedBean(name = "gameCreateMB")
 @RequestScoped
 public class GameCreateBean {
 
-	@EJB
-	private TeamEJB teamEJB;
+	@EJB(lookup="java:app/Hockey-ejb/TeamEJB")
+	private TeamEJBLocal teamEJB;
 
-	@EJB
-	private GameEJB gameEJB;
+	@EJB(lookup="java:app/Hockey-ejb/GameEJB")
+	private GameEJBLocal gameEJB;
 
 	private Game game = new Game();
 

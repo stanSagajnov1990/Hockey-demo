@@ -8,9 +8,10 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import com.stanislav.model.Team;
+import com.stanislav.specifications.TeamEJBLocal;
 
 @Stateless
-public class TeamEJB {
+public class TeamEJB implements TeamEJBLocal {
 	
 	@PersistenceContext
 	private EntityManager em;

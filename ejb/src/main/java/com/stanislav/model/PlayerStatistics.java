@@ -12,14 +12,14 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 @NamedQueries({
-	@NamedQuery(query = "SELECT ps FROM PlayerStatistics ps WHERE ps.player.id = :PLAYER_ID", name="PlayerStatistics.findAllForPlayer")
+	@NamedQuery(query = "FROM PlayerStatistics ps WHERE ps.player.id = :PLAYER_ID", name="PlayerStatistics.findAllForPlayer")
 })
 
 
 @Entity
 @Table(name="PLAYER_STATISTICS")
 public class PlayerStatistics {
-
+	
 	@Id 
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="PS_ID")

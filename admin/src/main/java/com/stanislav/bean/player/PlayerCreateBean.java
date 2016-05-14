@@ -11,8 +11,6 @@ import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.model.SelectItem;
 
-import com.stanislav.PlayerEJB;
-import com.stanislav.TeamEJB;
 import com.stanislav.model.Player;
 import com.stanislav.model.Team;
 import com.stanislav.specifications.PlayerEJBLocal;

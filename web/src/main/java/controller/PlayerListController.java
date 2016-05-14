@@ -2,14 +2,12 @@ package controller;
 
 import java.util.List;
 
-import javax.naming.InitialContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.AbstractController;
 
-import com.stanislav.PlayerEJB;
 import com.stanislav.model.Player;
 import com.stanislav.specifications.PlayerEJBLocal;
 

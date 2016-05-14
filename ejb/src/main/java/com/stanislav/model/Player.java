@@ -7,7 +7,6 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -20,12 +19,9 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
-
 @NamedQueries({
-	@NamedQuery(query = "SELECT p from Player p where p.name = :name", name="Player.findByName"),
-	@NamedQuery(query = "SELECT p FROM Player p", name="Player.findAll")
+	@NamedQuery(query = "FROM Player p WHERE p.name = :name", name="Player.findByName"),
+	@NamedQuery(query = "FROM Player p", name="Player.findAll")
 })
 
 

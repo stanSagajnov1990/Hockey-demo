@@ -41,7 +41,7 @@
 						<webModule>
 							<groupId>com.stanislav</groupId>
 							<artifactId>Hockey-admin</artifactId>
-							<contextRoot>/Hockey-main</contextRoot>
+							<contextRoot>/Hockey-admin</contextRoot>
 						</webModule>
 						<webModule>
 							<groupId>com.stanislav</groupId>

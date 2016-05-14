@@ -7,7 +7,6 @@ import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 
-import com.stanislav.PlayerEJB;
 import com.stanislav.model.Player;
 import com.stanislav.specifications.PlayerEJBLocal;
 

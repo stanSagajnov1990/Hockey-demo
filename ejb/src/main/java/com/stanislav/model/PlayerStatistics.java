@@ -1,5 +1,8 @@
 package com.stanislav.model;
 
+import java.io.Serializable;
+import java.math.BigDecimal;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -18,8 +21,12 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="PLAYER_STATISTICS")
-public class PlayerStatistics {
+public class PlayerStatistics extends Statistics implements Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -4887123564231595970L;
 	@Id 
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="PS_ID")
@@ -27,45 +34,36 @@ public class PlayerStatistics {
 	@ManyToOne
 	@JoinColumn(name="PLAYER_ID",nullable=false)
 	private Player player;
-	@Column(name="YEAR")
-	private int year;
-	@Column(name="PLAYOFF_STATISTICS")
-	private boolean playoffStatistics;
-	@Column(name="GAMES_PLAYED")
-	private int gamesPlayed;
 	@Column(name="GOALS")
-	private int goals;
+	private Integer goals;
 	@Column(name="ASSISTS")
-	private int assists;
+	private Integer assists;
 	@Column(name="POINTS")
-	private int points;
+	private Integer points;
 	@Column(name="PLUS_MINUS")
-	private int plusminus;
+	private Integer plusminus;
 	@Column(name="PENALTY_IN_MINUTES")
-	private int penaltyInMinutes;
+	private Integer penaltyInMinutes;
 	@Column(name="POWERPLAY_GOALS")
-	private int powerPlayGoals;
+	private Integer powerPlayGoals;
 	@Column(name="POWERPLAY_POINTS")
-	private int powerPlayPoints;
+	private Integer powerPlayPoints;
 	@Column(name="SHORTHANDED_GOALS")
-	private int shortHandedGoals;
+	private Integer shortHandedGoals;
 	@Column(name="SHORTHANDED_POINTS")
-	private int shortHandedPoints;
+	private Integer shortHandedPoints;
 	@Column(name="GAME_WINNING_GOALS")
-	private int gameWinningGoals;
+	private Integer gameWinningGoals;
 	@Column(name="OVERTIME_GOALS")
-	private int overtimeGoals;
+	private Integer overtimeGoals;
 	@Column(name="SHOTS")
-	private int shots;
-	@Column(name="SHOT_PERCENTAGE")
-	private double shotPercentage;
-	@Column(name="FACEOFF_WIN_PERCENTAGE")
-	private double faceoffWinPercentage;
+	private Integer shots;
+	@Column(name="SHOT_PERCENTAGE", columnDefinition="decimal", precision=18, scale=2)
+	private BigDecimal shotPercentage;
+	@Column(name="FACEOFF_WIN_PERCENTAGE", columnDefinition="decimal", precision=18, scale=2)
+	private BigDecimal faceoffWinPercentage;
 	
-	@ManyToOne
-	@JoinColumn(name="TEAM_ID",nullable=false)
-	private Team team;
-	
+
 	public Long getId() {
 		return id;
 	}
@@ -82,30 +80,6 @@ public class PlayerStatistics {
 		this.player = player;
 	}
 	
-	public int getYear() {
-		return year;
-	}
-	
-	public void setYear(int year) {
-		this.year = year;
-	}
-	
-	public boolean isPlayoffStatistics() {
-		return playoffStatistics;
-	}
-	
-	public void setPlayoffStatistics(boolean playoffStatistics) {
-		this.playoffStatistics = playoffStatistics;
-	}
-
-	public int getGamesPlayed() {
-		return gamesPlayed;
-	}
-
-	public void setGamesPlayed(int gamesPlayed) {
-		this.gamesPlayed = gamesPlayed;
-	}
-
 	public int getGoals() {
 		return goals;
 	}
@@ -202,28 +176,20 @@ public class PlayerStatistics {
 		this.shots = shots;
 	}
 
-	public double getShotPercentage() {
+	public BigDecimal getShotPercentage() {
 		return shotPercentage;
 	}
 
-	public void setShotPercentage(double shotPercentage) {
+	public void setShotPercentage(BigDecimal shotPercentage) {
 		this.shotPercentage = shotPercentage;
 	}
 
-	public double getFaceoffWinPercentage() {
+	public BigDecimal getFaceoffWinPercentage() {
 		return faceoffWinPercentage;
 	}
 
-	public void setFaceoffWinPercentage(double faceoffWinPercentage) {
+	public void setFaceoffWinPercentage(BigDecimal faceoffWinPercentage) {
 		this.faceoffWinPercentage = faceoffWinPercentage;
 	}
 
-	public Team getTeam() {
-		return team;
-	}
-
-	public void setTeam(Team team) {
-		this.team = team;
-	}
-	
 }

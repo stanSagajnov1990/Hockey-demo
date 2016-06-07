@@ -1,5 +1,6 @@
 package com.stanislav.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -9,15 +10,21 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+@NamedQuery(name="Game.findByDate",query="FROM Game g WHERE g.gameDate BETWEEN :ST_DATE AND :END_DATE")
 
 @Entity
 @Table(name="GAME")
-public class Game {
+public class Game implements Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 3510589234875463681L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="GAME_ID")

@@ -1,0 +1,63 @@
+body {
+	font-family: Sintony;
+	margin: 0px;
+}
+
+#personal_info {
+	width: 35%; 
+	float: left;
+}
+
+#personal_info span {
+	padding: 5px;
+	font-size: 20px;
+	display: inline-block;
+}
+
+#table_info {
+	float: right;	
+}	
+
+#table_info span {
+	padding: 10px;
+	font-size: 20px;
+}
+
+#table_info th, td {
+	padding: 5px;
+}
+
+.score {
+	font-size: 25px;
+}
+
+#player-stage {
+	background-color: black;
+}
+
+#player-info {
+	position: relative; 
+	top: -100px;
+}
+
+#player-image {
+	border-radius: 50%; 
+	display: block; 
+	margin-left: auto; 
+	margin-right: auto; 
+	display: block; 
+	margin-left: auto; 
+	margin-right: auto;
+}
+
+#player-addInfo{
+	padding: 20px; 
+	border-top: thick solid #C0C0C0;
+	/*float:left;*/
+}
+
+#player-foto {
+	margin-left: auto; 
+	margin-right: auto; 
+	display: block;
+}

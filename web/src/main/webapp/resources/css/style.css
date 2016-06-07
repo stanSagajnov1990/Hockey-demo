@@ -14,8 +14,34 @@ body {
 	display: inline-block;
 }
 
+#player-info > div {
+	margin-left: auto; 
+	margin-right: auto; 
+	width: 450px;
+}
+
+#player-name {
+	font-size: 35px; 
+	font-family: Sintony; 
+	font-weight: bold; 
+	margin-top: 10px; 
+	margin-left: auto; 
+	margin-right: auto; 
+	display: table; 
+	width: auto;
+}
+
+#player-secondLine {
+	font-size: 20px; 
+	font-weight: bold; 
+	color: #868686; 
+	display: table; 
+	margin-top: 10px;
+}
+
 #table_info {
-	float: right;	
+	float: right;
+	display: inline-block;
 }	
 
 #table_info span {
@@ -26,6 +52,11 @@ body {
 #table_info th, td {
 	padding: 5px;
 }
+
+#table_info table {
+	border-spacing: 0px;	
+}
+	
 
 .score {
 	font-size: 25px;
@@ -60,4 +91,10 @@ body {
 	margin-left: auto; 
 	margin-right: auto; 
 	display: block;
+}
+
+.team_logo {
+	height: 70px; 
+	width:70px;
+	display:inline-block;
 }

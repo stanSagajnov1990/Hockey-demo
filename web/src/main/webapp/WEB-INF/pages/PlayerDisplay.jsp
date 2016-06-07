@@ -12,21 +12,20 @@
 <body>
 	<div>
 		<c:forEach var="listEntry" items="${games}">
-			<div style="height: 70px;width:70px;display:inline-block;">
-			<c:out value="${listEntry.homeTeam.logoSmallAsString}" escapeXml="false"/>
+			<div class="team_logo">
+				<c:out value="${listEntry.homeTeam.logoSmallAsString}" escapeXml="false"/>
 			</div>
 			<c:out value="${listEntry.homeTeam.name}" /> 
 			<span class="score">
-			<c:out value="${listEntry.homeTeamScore}" /> 
+				<c:out value="${listEntry.homeTeamScore}" /> 
 			</span>	: 
 			<span class="score">
-			<c:out value="${listEntry.awayTeamScore}" /> 
+				<c:out value="${listEntry.awayTeamScore}" /> 
 			</span>
 			<c:out value="${listEntry.awayTeam.name}" /> 
-			<div style="height: 70px;width:70px;display:inline-block;">
-			<c:out value="${listEntry.awayTeam.logoSmallAsString}" escapeXml="false"/>
+			<div class="team_logo">
+				<c:out value="${listEntry.awayTeam.logoSmallAsString}" escapeXml="false"/>
 			</div>
-			
 			<br>
 		</c:forEach>
 	
@@ -38,17 +37,15 @@
 	</div>
 	<div id="player-stage">
 		<!-- <div style="background-image: url('${player.bigImageUrl }');margin-left: auto; margin-right: auto; display: block;" ></div>-->
-		<img id="player-foto" src="${player.bigImageUrl }"
-			style="" />
+		<img id="player-foto" src="${player.bigImageUrl }" />
 	</div>
 	<div id="player-info">
-		<div style="margin-left: auto; margin-right: auto; width: 450px;">
-			<img id="player-image" src="${player.imageUrl }"
-				style="" />
-			<span style="font-size: 35px; font-family: Sintony; font-weight: bold; margin-top: 10px; margin-left: auto; margin-right: auto; display: table; width: auto;">
+		<div>
+			<img id="player-image" src="${player.imageUrl }" />
+			<span id="player-name">
 				${player.name } | #${player.number} 
 			</span> 
-			<span style="font-size: 20px; font-weight: bold; color: #868686; display: table; margin-top: 10px;">
+			<span id="player-secondLine">
 				${player.position } | ${player.formattedHeight} | ${player.weight} lb | Age: ${player.age } | ${player.team.name }
 			</span>
 		</div>
@@ -59,10 +56,10 @@
 			<span style=""><b>Born: </b>${player.birthdate }</span><br> 
 			<span style=""><b>Birthplace: </b>${player.birthplace }</span>
 		</div>
-		<div id="table_info" style="display: inline-block;">
+		<div id="table_info">
 			<table>
-				<thead>
-					<tr style="color: white; background-color: black;">
+				<thead style="color: white; background-color: black;">
+					<tr >
 						<th><span>Season</span></th>
 						<th><span>GP</span></th>
 						<th><span>G</span></th>

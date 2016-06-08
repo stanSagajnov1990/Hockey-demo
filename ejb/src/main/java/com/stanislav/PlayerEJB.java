@@ -12,9 +12,10 @@ import javax.persistence.TypedQuery;
 import com.stanislav.model.Player;
 import com.stanislav.model.PlayerStatistics;
 import com.stanislav.specifications.PlayerEJBLocal;
+import com.stanislav.specifications.PlayerEJBRemote;
 
 @Stateless
-public class PlayerEJB implements PlayerEJBLocal{
+public class PlayerEJB implements PlayerEJBLocal, PlayerEJBRemote {
 
 	@PersistenceContext
 	private EntityManager em;

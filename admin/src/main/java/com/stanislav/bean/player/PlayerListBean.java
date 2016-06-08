@@ -16,7 +16,7 @@ public class PlayerListBean {
 
 	private List<Player> players;
 
-	@EJB(lookup="java:app/Hockey-ejb/PlayerEJB")
+	@EJB(lookup="java:app/Hockey-ejb/PlayerEJB!com.stanislav.specifications.PlayerEJBLocal")
 	private PlayerEJBLocal playerEJB;
 
 	@PostConstruct

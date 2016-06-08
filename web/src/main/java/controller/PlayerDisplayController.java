@@ -1,6 +1,8 @@
 package controller;
 
+import java.text.SimpleDateFormat;
 import java.util.List;
+import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -11,6 +13,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.AbstractController;
 
+import com.stanislav.model.Game;
 import com.stanislav.model.Player;
 import com.stanislav.model.PlayerStatistics;
 import com.stanislav.specifications.GameEJBLocal;
@@ -42,6 +45,11 @@ public class PlayerDisplayController extends AbstractController {
 		Long id = Long.valueOf(req.getParameter("id"));
 		logger.info("show User with id: "+id);
 		Player player = playerEJB.getPlayerByIdWithEagerStatistics(id);
+				
+		SimpleDateFormat sdf = new SimpleDateFormat("y/MM/dd", Locale.ENGLISH);
+		List<Game> games = gameEJB.getGamesByDate(sdf.parse("2016/02/02"));
+		
+		model.addObject("games", games);
 		
 		if(player == null){
 			return new ModelAndView("redirect:/all_players.htm");

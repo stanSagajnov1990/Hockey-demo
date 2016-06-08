@@ -20,7 +20,7 @@ import com.stanislav.specifications.TeamEJBLocal;
 @RequestScoped
 public class PlayerCreateBean {
 
-	@EJB(lookup="java:app/Hockey-ejb/PlayerEJB")
+	@EJB(lookup="java:app/Hockey-ejb/PlayerEJB!com.stanislav.specifications.PlayerEJBLocal")
 	private PlayerEJBLocal playerEJB;
 
 	@EJB(lookup="java:app/Hockey-ejb/TeamEJB")

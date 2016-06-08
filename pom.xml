@@ -10,6 +10,7 @@
 		<module>admin</module>
 		<module>ear</module>
 		<module>web</module>
+		<module>swing</module>
 	</modules>
 
 	<properties>

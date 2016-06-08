@@ -2,7 +2,8 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -12,21 +13,27 @@
 <body>
 	<div>
 		<c:forEach var="listEntry" items="${games}">
-			<div class="team_logo">
-				<c:out value="${listEntry.homeTeam.logoSmallAsString}" escapeXml="false"/>
+			<div style="padding: 10px; border: 1px solid black; display: inline-block; width: auto;padding-right:25px;">
+				<div class="team_logo">
+					<c:out value="${listEntry.homeTeam.logoSmallAsString}" escapeXml="false"/>
+				</div>
+				<span style="vertical-align: super;position:relative; top: -3px;">
+					<c:out value="${fn:toUpperCase(listEntry.homeTeam.token)}" />
+				</span> 
+				<span class="score">
+					<c:out value="${listEntry.homeTeamScore}" /> 
+				</span>
+				<br>
+				<div class="team_logo">
+					<c:out value="${listEntry.awayTeam.logoSmallAsString}" escapeXml="false"/>
+				</div>
+				<span style="vertical-align: super;position:relative; top: -3px;">
+					<c:out value="${fn:toUpperCase(listEntry.awayTeam.token)}" />
+				</span> 
+				<span class="score">
+					<c:out value="${listEntry.awayTeamScore}" /> 
+				</span>
 			</div>
-			<c:out value="${listEntry.homeTeam.name}" /> 
-			<span class="score">
-				<c:out value="${listEntry.homeTeamScore}" /> 
-			</span>	: 
-			<span class="score">
-				<c:out value="${listEntry.awayTeamScore}" /> 
-			</span>
-			<c:out value="${listEntry.awayTeam.name}" /> 
-			<div class="team_logo">
-				<c:out value="${listEntry.awayTeam.logoSmallAsString}" escapeXml="false"/>
-			</div>
-			<br>
 		</c:forEach>
 	
 	</div>

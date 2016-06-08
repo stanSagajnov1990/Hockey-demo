@@ -60,6 +60,8 @@ body {
 
 .score {
 	font-size: 25px;
+	padding: 10px;
+	vertical-align: super;
 }
 
 #player-stage {
@@ -94,7 +96,7 @@ body {
 }
 
 .team_logo {
-	height: 70px; 
-	width:70px;
-	display:inline-block;
+	height: 40px; 
+	width: 50px;
+	display: inline-block;
 }

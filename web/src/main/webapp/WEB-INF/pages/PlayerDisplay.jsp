@@ -35,7 +35,6 @@
 				</span>
 			</div>
 		</c:forEach>
-	
 	</div>
 	<div>
 		<a> <img src="<spring:url value="/resources/img/nhl_logo.png"/>" height="60" /> 

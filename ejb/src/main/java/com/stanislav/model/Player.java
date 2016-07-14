@@ -20,6 +20,8 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 import org.hibernate.annotations.Formula;
 
@@ -30,6 +32,7 @@ import org.hibernate.annotations.Formula;
 
 
 @Entity
+@XmlRootElement
 public class Player implements Serializable {
 	
 	/**
@@ -75,11 +78,11 @@ public class Player implements Serializable {
 	@Formula("concat(height/12,'''',height%12,'''''')")
 	private String formattedHeight;
 	
-	
 	@ManyToOne
 	@JoinColumn(name = "TEAM_ID", nullable = false)
 	private Team team;
 
+	@XmlTransient
 	public Team getTeam() {
 		return team;
 	}
@@ -176,6 +179,7 @@ public class Player implements Serializable {
 		this.bigImageUrl = bigImageUrl;
 	}
 	
+	@XmlTransient
 	public List<PlayerStatistics> getPlayerStatistics() {
 		return playerStatistics;
 	}

@@ -21,7 +21,7 @@ public class Players extends ArrayList<Player> {
 		super(c);
 	}
 	
-	@XmlElement(name = "book")
+	@XmlElement(name = "player")
 	public List<Player> getPlayers(){
 		return this;
 	}

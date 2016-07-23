@@ -74,6 +74,15 @@ public class PlayerEJB implements PlayerEJBLocal, PlayerEJBRemote {
 		TypedQuery<Player> query = em.createNamedQuery("Player.findAll", Player.class);
 		return query.getResultList();
 	}
+	
+	public List<Player> getAllPlayersFromPosition(String position) {
+		if(position != null){
+			position = position.toUpperCase();
+		}
+		TypedQuery<Player> query = em.createNamedQuery("Player.findAllFromPosition", Player.class);
+		query.setParameter("position", position);
+		return query.getResultList();
+	}
 
 	public List<PlayerStatistics> eagerPlayerStatistics(Long id) {
 		TypedQuery<PlayerStatistics> query = em.createNamedQuery("PlayerStatistics.findAllForPlayer", PlayerStatistics.class);

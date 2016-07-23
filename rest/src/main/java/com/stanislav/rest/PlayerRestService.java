@@ -7,6 +7,7 @@ import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
@@ -15,7 +16,7 @@ import com.stanislav.model.Team;
 import com.stanislav.specifications.PlayerEJBLocal;
 import com.stanislav.specifications.TeamEJBLocal;
 
-@Path("/player")
+@Path("/players")
 @Produces({ MediaType.APPLICATION_XML })
 public class PlayerRestService {
 
@@ -54,7 +55,7 @@ public class PlayerRestService {
 	}
 
 	@GET
-	public Response getAllPlayers() {
+	public Response getAllPlayers(@QueryParam("position") String position) {
 //		PlayerEJBLocal playerEJB = null;
 //		try {
 //			final Context context = new InitialContext();
@@ -64,8 +65,13 @@ public class PlayerRestService {
 //		} catch (NamingException e) {
 //			e.printStackTrace();
 //		}
+		List<Player> playerList = null;
+		if(position != null && !position.isEmpty()){
+			playerList = playerEJB.getAllPlayersFromPosition(position);
+		} else {
+			playerList = playerEJB.getAllPlayers();
+		}
 
-		List<Player> playerList = playerEJB.getAllPlayers();
 		Players players = new Players(playerList);
 		return Response.ok(players).build();
 	}

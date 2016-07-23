@@ -27,7 +27,8 @@ import org.hibernate.annotations.Formula;
 
 @NamedQueries({
 	@NamedQuery(query = "FROM Player p WHERE p.name = :name", name="Player.findByName"),
-	@NamedQuery(query = "FROM Player p", name="Player.findAll")
+	@NamedQuery(query = "FROM Player p", name="Player.findAll"),
+	@NamedQuery(query = "FROM Player p where p.position = :position", name="Player.findAllFromPosition")
 })
 
 

@@ -16,5 +16,6 @@ public interface PlayerEJBLocal {
 	public void updatePlayer(Player player);
 	public Object[] getSumOfPlayerStatistics(Player player, boolean onlyPlayoffs);
 	public List<Player> getAllPlayers();
+	public List<Player> getAllPlayersFromPosition(String position);
 	public List<PlayerStatistics> eagerPlayerStatistics(Long id);
 }

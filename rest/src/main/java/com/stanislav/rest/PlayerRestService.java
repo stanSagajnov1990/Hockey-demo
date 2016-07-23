@@ -39,14 +39,22 @@ public class PlayerRestService {
 //			e.printStackTrace();
 //		}
 
-		Team team = teamEJB.getTeamById(1L);
+//		Team team = teamEJB.getTeamById(1L);
 
 		Player player = playerEJB.getPlayerById(Long.valueOf(id));
 		return Response.ok(player).build();
 	}
+	
+	@GET
+	@Path("{id}/team")
+	public Response getTeamForPlayer(@PathParam("id") String id) {
+		Player player = playerEJB.getPlayerById(Long.valueOf(id));
+		Team team = player.getTeam();
+		return Response.ok(team).build();
+	}
 
 	@GET
-	public Response getAllBooks() {
+	public Response getAllPlayers() {
 //		PlayerEJBLocal playerEJB = null;
 //		try {
 //			final Context context = new InitialContext();

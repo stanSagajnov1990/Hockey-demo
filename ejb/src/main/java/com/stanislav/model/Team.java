@@ -15,10 +15,13 @@ import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 @NamedQuery(name = "Team.findByName", query = "SELECT t from Team t WHERE t.name = :name")
 
 @Entity
+@XmlRootElement
 public class Team implements Serializable {
 
 	/**
@@ -32,9 +35,13 @@ public class Team implements Serializable {
 
 	@Column(name = "NAME")
 	private String name;
+	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "team")
 	private List<Player> players = new ArrayList<Player>();
 
+	@Column(name="ARENA")
+	private String arena;
+	
 	@Basic(fetch = FetchType.EAGER)
 	@Lob
 	@Column(name = "logo_small", columnDefinition = "VARBINARY")
@@ -51,6 +58,7 @@ public class Team implements Serializable {
 		return name;
 	}
 
+	@XmlTransient
 	public List<Player> getPlayers() {
 		return players;
 	}
@@ -63,6 +71,7 @@ public class Team implements Serializable {
 		this.name = name;
 	}
 
+	@XmlTransient
 	public byte[] getLogoSmall() {
 		return logoSmall;
 	}
@@ -90,4 +99,13 @@ public class Team implements Serializable {
 	public void addPlayer(Player player) {
 		this.players.add(player);
 	}
+	
+	public String getArena() {
+		return arena;
+	}
+	
+	public void setArena(String arena) {
+		this.arena = arena;
+	}
+	
 }

@@ -1,6 +1,11 @@
 package com.stanislav.rest;
 
+import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
+import java.util.function.BiFunction;
 
 import javax.ejb.EJB;
 import javax.ws.rs.GET;
@@ -8,8 +13,10 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
+import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import javax.ws.rs.core.UriInfo;
 
 import com.stanislav.model.Player;
 import com.stanislav.model.Team;
@@ -26,21 +33,12 @@ public class PlayerRestService {
 	@EJB(lookup = "java:app/Hockey-ejb/TeamEJB")
 	private TeamEJBLocal teamEJB;
 
+	@Context
+	private UriInfo uriInfo;
+	
 	@GET
 	@Path("{id}")
 	public Response getPlayer(@PathParam("id") String id) {
-
-//		PlayerEJBLocal playerEJB = null;
-//		try {
-//			final Context context = new InitialContext();
-//
-//			playerEJB = (PlayerEJBLocal) context
-//					.lookup("java:app/Hockey-ejb/PlayerEJB!com.stanislav.specifications.PlayerEJBLocal");
-//		} catch (NamingException e) {
-//			e.printStackTrace();
-//		}
-
-//		Team team = teamEJB.getTeamById(1L);
 
 		Player player = playerEJB.getPlayerById(Long.valueOf(id));
 		return Response.ok(player).build();
@@ -56,23 +54,24 @@ public class PlayerRestService {
 
 	@GET
 	public Response getAllPlayers(@QueryParam("position") String position) {
-//		PlayerEJBLocal playerEJB = null;
-//		try {
-//			final Context context = new InitialContext();
-//
-//			playerEJB = (PlayerEJBLocal) context
-//					.lookup("java:app/Hockey-ejb/PlayerEJB!com.stanislav.specifications.PlayerEJBLocal");
-//		} catch (NamingException e) {
-//			e.printStackTrace();
-//		}
 		List<Player> playerList = null;
 		if(position != null && !position.isEmpty()){
 			playerList = playerEJB.getAllPlayersFromPosition(position);
 		} else {
 			playerList = playerEJB.getAllPlayers();
 		}
+		
+		List<Player> wsPlayers = new ArrayList<>();
+		
+		for (Player player : playerList) {
+			Player wsPlayer = new Player();
+			wsPlayer.setId(player.getId());
+			wsPlayer.setUri(uriInfo.getAbsolutePath() + "/" + player.getId());
+			wsPlayer.setName(player.getName());
+			wsPlayers.add(wsPlayer);
+		}
 
-		Players players = new Players(playerList);
+		Players players = new Players(wsPlayers);
 		return Response.ok(players).build();
 	}
 

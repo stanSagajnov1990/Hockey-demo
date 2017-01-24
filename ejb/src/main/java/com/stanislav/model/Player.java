@@ -6,10 +6,10 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.AttributeConverter;
 import javax.persistence.Column;
+import javax.persistence.Convert;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -20,6 +20,8 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
+import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
@@ -40,49 +42,65 @@ public class Player implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 8475797694864167034L;
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="PLAYER_ID")
 	private Long id;
+	
 	@Column(name="NAME")
 	private String name;
+	
 	@Column(name="AGE")
 	private Integer age;
+	
 	@Column(name="NUMBER")
 	private Integer number;
+	
 	@Column(name="POSITION")
 	private String position;
+	
 	@Temporal(TemporalType.DATE)
 	@Column(name="BIRTH_DATE")
 	private Date birthdate;
+	
 	@Column(name="BIRTH_PLACE")
 	private String birthplace;
+	
 	@Column(name="WEIGHT")
 	private Integer weight;
+	
 	@Column(name="HEIGHT")
 	private Integer height;
+	
 	@Column(name="IMAGE_URL")
 	private String imageUrl;
+	
 	@Column(name="BIG_IMAGE_URL")
 	private String bigImageUrl;
+	
 	//TODO write UnitTest for Fetch Eager and Lazy
 	@OneToMany(mappedBy="player")
 	private List<PlayerStatistics> playerStatistics = new ArrayList<PlayerStatistics>();
+
 	@OneToMany(mappedBy="player")
 	private List<GoalieStatistics> goalieStatistics = new ArrayList<GoalieStatistics>();
 
-	@Enumerated(EnumType.STRING)
+	@Convert(converter = PlayerTypeConverter.class)
 	@Column(name="PLAYER_TYPE")
 	private PlayerType playerType;
 	
 //	@Transient
 	@Formula("concat(height/12,'''',height%12,'''''')")
 	private String formattedHeight;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "TEAM_ID", nullable = false)
 	private Team team;
-
+	
+	@Transient
+	private String uri;
+	
 	@XmlTransient
 	public Team getTeam() {
 		return team;
@@ -92,6 +110,7 @@ public class Player implements Serializable {
 		this.team = team;
 	}
 
+	@XmlAttribute
 	public Long getId() {
 		return id;
 	}
@@ -203,6 +222,38 @@ public class Player implements Serializable {
 	
 	public void setFormattedHeight(String formattedHeight) {
 		this.formattedHeight = formattedHeight;
+	}
+	
+	@XmlAttribute
+	public String getUri() {
+		return uri;
+	}
+	
+	public void setUri(String uri) {
+		this.uri = uri;
+	}
+
+	
+	public static class PlayerTypeConverter implements AttributeConverter<PlayerType, Character> {
+		
+		@Override
+		public Character convertToDatabaseColumn(PlayerType attribute) {
+	        if ( attribute == null ) {
+	            return null;
+	        }
+
+	        return attribute.getCode();
+		}
+		
+		@Override
+		public PlayerType convertToEntityAttribute(Character value) {
+	        if ( value == null ) {
+	            return null;
+	        }
+
+	        return PlayerType.fromCode( value );
+		}
+		
 	}
 	
 }
